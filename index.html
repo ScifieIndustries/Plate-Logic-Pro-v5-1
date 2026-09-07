@@ -845,7 +845,7 @@ if ('serviceWorker' in navigator) {
   };
   window.plRefreshPlan=function(){
     const b=document.getElementById('pl-plan-badge'),x=document.getElementById('pl-usage');
-    const plan=(currentEntitlement?.plan||p());
+    const plan=(currentUser ? (currentEntitlement?.plan||'free') : 'free');
     if(plan!=='free'){
       b.textContent=plan==='lifetime'?'LIFETIME':'PRO';
       x.textContent=plan==='lifetime'?'Lifetime-adgang er slået til.':'Ubegrænset brug er slået til.';
@@ -855,7 +855,7 @@ if ('serviceWorker' in navigator) {
     }
   };
   window.plCanUse=function(){
-    const plan=(currentEntitlement?.plan||p());
+    const plan=(currentUser ? (currentEntitlement?.plan||'free') : 'free');
     if(plan!=='free')return true;
     let n=u();
     if(n>=L){plOpenPay('Pro');return false}
