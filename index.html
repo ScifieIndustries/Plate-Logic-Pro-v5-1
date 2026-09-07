@@ -834,7 +834,7 @@ window.plVerifyOtp=async function(){
   }
 
   currentUser=data?.user||null;
-
+document.getElementById('pl-auth-otp-input').value='';
   setStatus('Du er logget ind.');
   await loadEntitlement();
 
