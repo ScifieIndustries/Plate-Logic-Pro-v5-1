@@ -294,11 +294,21 @@
 
 <div id="pl-auth-modal" class="pl-auth-backdrop" onclick="if(event.target===this)plCloseAuth()"><div class="pl-auth-modal">
   <h2>Log ind på Plate Logic</h2>
-  <p>Indtast din e-mail. Du får et sikkert login-link på mail — du behøver ikke en adgangskode.</p>
-  <input id="pl-auth-email-input" type="email" autocomplete="email" placeholder="din@email.dk">
-  <button class="pl-auth-submit" onclick="plSendLoginLink()">Send login-link</button>
-  <div id="pl-auth-status" class="pl-auth-status"></div>
-  <button class="pl-auth-close" onclick="plCloseAuth()">Luk</button>
+
+<p>Indtast din e-mail. Du får en 6-cifret kode på mail.</p>
+
+<input id="pl-auth-email-input" type="email" autocomplete="email" placeholder="din@email.dk">
+
+<button class="pl-auth-submit" onclick="plSendLoginLink()">Send kode</button>
+
+<div id="pl-auth-otp" style="display:none;margin-top:12px;">
+  <input id="pl-auth-otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-cifret kode">
+  <button class="pl-auth-submit" onclick="plVerifyOtp()">Log ind</button>
+</div>
+
+<div id="pl-auth-status" class="pl-auth-status"></div>
+
+<button class="pl-auth-close" onclick="plCloseAuth()">Luk</button>
 </div></div>
 <div class="hero">
   <div class="hero-inner">
@@ -759,19 +769,79 @@ if ('serviceWorker' in navigator) {
   };
 
   window.plSendLoginLink=async function(){
-    if(!sb){setStatus('Login er ikke konfigureret endnu.');return}
-    const input=document.getElementById('pl-auth-email-input');
-    const email=(input?.value||'').trim().toLowerCase();
-    if(!email||!email.includes('@')){setStatus('Indtast en gyldig e-mailadresse.');return}
-    setStatus('Sender login-link…');
-    const {error}=await sb.auth.signInWithOtp({
-      email,
-      options:{emailRedirectTo:window.location.href}
-    });
-    if(error){console.error(error);setStatus('Der opstod en fejl. Prøv igen.');return}
-    setStatus('Login-link sendt. Tjek din e-mail.');
-  };
+  if(!sb){setStatus('Login er ikke konfigureret endnu.');return}
 
+  const input=document.getElementById('pl-auth-email-input');
+  const email=(input?.value||'').trim().toLowerCase();
+
+  if(!email||!email.includes('@')){
+    setStatus('Indtast en gyldig e-mailadresse.');
+    return;
+  }
+
+  setStatus('Sender kode...');
+
+  const {error}=await sb.auth.signInWithOtp({
+    email
+  });
+
+  if(error){
+    console.error(error);
+    setStatus('Der opstod en fejl. Prøv igen.');
+    return;
+  }
+
+  const otpBox=document.getElementById('pl-auth-otp');
+  if(otpBox) otpBox.style.display='block';
+
+  const otpInput=document.getElementById('pl-auth-otp-input');
+  if(otpInput){
+    otpInput.value='';
+    otpInput.focus();
+  }
+
+  setStatus('6-cifret kode sendt. Tjek din e-mail.');
+};
+
+window.plVerifyOtp=async function(){
+  if(!sb){setStatus('Login er ikke konfigureret endnu.');return}
+
+  const email=(document.getElementById('pl-auth-email-input')?.value||'').trim().toLowerCase();
+  const token=(document.getElementById('pl-auth-otp-input')?.value||'').trim();
+
+  if(!email||!email.includes('@')){
+    setStatus('Indtast din e-mailadresse.');
+    return;
+  }
+
+  if(!/^\d{6}$/.test(token)){
+    setStatus('Indtast den 6-cifrede kode.');
+    return;
+  }
+
+  setStatus('Logger ind...');
+
+  const {data,error}=await sb.auth.verifyOtp({
+    email,
+    token,
+    type:'email'
+  });
+
+  if(error){
+    console.error(error);
+    setStatus('Koden er forkert eller udløbet. Prøv igen.');
+    return;
+  }
+
+  currentUser=data?.user||null;
+
+  setStatus('Du er logget ind.');
+  await loadEntitlement();
+
+  setTimeout(()=>{
+    plCloseAuth();
+  },500);
+};
   window.plSignOut=async function(){
     if(sb)await sb.auth.signOut();
   };
