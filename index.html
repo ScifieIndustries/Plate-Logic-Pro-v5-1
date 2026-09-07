@@ -290,7 +290,7 @@
 .pl-auth-status{font-size:12px;min-height:18px;margin-top:8px}
 </style>
 </head>
-<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p>Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug, eller køb Lifetime én gang.</p><div id="pl-plan-actions" class="pl-plan-actions"><button class="pl-pro" onclick="plOpenPay('Pro')">Pro · 39 kr./md.</button><button class="pl-life" onclick="plOpenPay('Lifetime')">Lifetime · 149 kr.</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
+<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p>Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug, eller køb Lifetime én gang.</p><div id="pl-plan-actions" class="pl-plan-actions"><button id="pl-pro-action" class="pl-pro" onclick="plOpenPay('Pro')">Pro · 39 kr./md.</button><button class="pl-life" onclick="plOpenPay('Lifetime')">Lifetime · 149 kr.</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
 
 <div id="pl-auth-modal" class="pl-auth-backdrop" onclick="if(event.target===this)plCloseAuth()"><div class="pl-auth-modal">
   <h2>Log ind på Plate Logic</h2>
@@ -905,6 +905,25 @@ document.getElementById('pl-auth-otp-input').value='';
     document.getElementById('pl-pay-price').textContent=x==='Lifetime'?'149 kr. én gang':'39 kr./md.';
     document.getElementById('pl-pay-btn').textContent=x==='Lifetime'?'Køb Lifetime':'Fortsæt til betaling';
     document.getElementById('pl-pay-modal').style.display='flex';
+    window.plOpenPortal=async function(){
+  if(!currentUser){
+    plOpenAuth();
+    setStatus('Log ind først.');
+    return;
+  }
+
+  setStatus('Åbner abonnement...');
+
+  const {data,error}=await sb.functions.invoke('create-portal-session',{body:{}});
+
+  if(error||!data?.url){
+    console.error(error||data);
+    setStatus('Kunne ikke åbne abonnementssiden.');
+    return;
+  }
+
+  window.location.href=data.url;
+};
   };
   window.plClosePay=function(){document.getElementById('pl-pay-modal').style.display='none'};
   window.plGoToStripe=function(){
@@ -917,6 +936,16 @@ document.getElementById('pl-auth-otp-input').value='';
     const b=document.getElementById('pl-plan-badge'),x=document.getElementById('pl-usage');
     const plan=(currentUser ? (currentEntitlement?.plan||'free') : 'free');
     const actions=document.getElementById('pl-plan-actions'); if(actions) actions.style.display=plan==='lifetime'?'none':'';
+    const proAction=document.getElementById('pl-pro-action');
+if(proAction){
+  if(plan==='pro'){
+    proAction.textContent='Annuller abonnement';
+    proAction.onclick=plOpenPortal;
+  }else{
+    proAction.textContent='Pro · 39 kr./md.';
+    proAction.onclick=function(){plOpenPay('Pro');};
+  }
+}
     if(plan!=='free'){
       b.textContent=plan==='lifetime'?'LIFETIME':'PRO';
       x.textContent=plan==='lifetime'?'Lifetime-adgang er slået til.':'Ubegrænset brug er slået til.';
