@@ -295,14 +295,14 @@
 <div id="pl-auth-modal" class="pl-auth-backdrop" onclick="if(event.target===this)plCloseAuth()"><div class="pl-auth-modal">
   <h2>Log ind på Plate Logic</h2>
 
-<p>Indtast din e-mail. Du får en 6-cifret kode på mail.</p>
+<p>Indtast din e-mail. Du får en 8-cifret kode på mail.</p>
 
 <input id="pl-auth-email-input" type="email" autocomplete="email" placeholder="din@email.dk">
 
 <button class="pl-auth-submit" onclick="plSendLoginLink()">Send kode</button>
 
 <div id="pl-auth-otp" style="display:none;margin-top:12px;">
-  <input id="pl-auth-otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-cifret kode">
+  <input id="pl-auth-otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="8-cifret kode">
   <button class="pl-auth-submit" onclick="plVerifyOtp()">Log ind</button>
 </div>
 
@@ -800,7 +800,7 @@ if ('serviceWorker' in navigator) {
     otpInput.focus();
   }
 
-  setStatus('6-cifret kode sendt. Tjek din e-mail.');
+  setStatus('8-cifret kode sendt. Tjek din e-mail.');
 };
 
 window.plVerifyOtp=async function(){
@@ -814,8 +814,8 @@ window.plVerifyOtp=async function(){
     return;
   }
 
-  if(!/^\d{6}$/.test(token)){
-    setStatus('Indtast den 6-cifrede kode.');
+  if(!/^\d{8}$/.test(token)){
+    setStatus('Indtast den 8-cifrede kode.');
     return;
   }
 
