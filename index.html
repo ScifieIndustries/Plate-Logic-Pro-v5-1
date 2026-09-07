@@ -840,7 +840,7 @@ if ('serviceWorker' in navigator) {
   window.plGoToStripe=function(){
     const base=STRIPE[window.plSelectedPlan||'Pro'];
     const email=currentUser?.email;
-    const url=email ? base + (base.includes('?')?'&':'?') + 'prefilled_email=' + encodeURIComponent(email) : base;
+    const url=base;
     window.location.href=url;
   };
   window.plRefreshPlan=function(){
