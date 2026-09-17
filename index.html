@@ -923,8 +923,9 @@ if(data?.plan==='pro' || data?.plan==='lifetime'){
     return;
   }
 
-  window.location.href=data.url;
+ window.location.href=data.url;
 };
+  };
   window.plClosePay=function(){document.getElementById('pl-pay-modal').style.display='none'};
   window.plGoToStripe=function(){
     const base=STRIPE[window.plSelectedPlan||'Pro'];
