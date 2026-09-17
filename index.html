@@ -835,12 +835,16 @@ window.plVerifyOtp=async function(){
 
   currentUser=data?.user||null;
 document.getElementById('pl-auth-otp-input').value='';
-  setStatus('Du er logget ind.');
-  await loadEntitlement();
 
-  setTimeout(()=>{
-    plCloseAuth();
-  },500);
+await loadEntitlement();
+plRefreshPlan();
+renderAuth();
+
+setStatus('Du er logget ind.');
+
+setTimeout(()=>{
+  plCloseAuth();
+},300);
 };
  window.plSignOut=async function(){
     if(sb)await sb.auth.signOut();
