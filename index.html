@@ -852,7 +852,6 @@ document.getElementById('pl-auth-otp-input').value='';
 
   async function loadEntitlement(){
     currentEntitlement=null;
-    plRefreshPlan();
     if(!sb||!currentUser)return;
 
     // Always read the entitlement from Supabase for the currently authenticated user.
