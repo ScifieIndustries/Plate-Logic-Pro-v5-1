@@ -870,8 +870,9 @@ document.getElementById('pl-auth-otp-input').value='';
     }
 
     currentEntitlement=data||null;
+plRefreshPlan();
 
-    if(data?.plan==='pro' || data?.plan==='lifetime'){
+if(data?.plan==='pro' || data?.plan==='lifetime'){
       localStorage.setItem(pk,data.plan);
     }
 
