@@ -904,17 +904,20 @@ if(data?.plan==='pro' || data?.plan==='lifetime'){
   }
 
   window.plOpenPay=function(x){
-    if(!currentUser){
-      plOpenAuth();
-      setStatus('Log ind først. Så kan betalingen kobles til din konto.');
-      return;
-    }
-    window.plSelectedPlan=x;
-    document.getElementById('pl-pay-title').textContent=x==='Lifetime'?'Plate Logic Lifetime':'Plate Logic Pro';
-    document.getElementById('pl-pay-price').textContent=x==='Lifetime'?'149 kr. én gang':'39 kr./md.';
-    document.getElementById('pl-pay-btn').textContent=x==='Lifetime'?'Køb Lifetime':'Fortsæt til betaling';
-    document.getElementById('pl-pay-modal').style.display='flex';
-    window.plOpenPortal=async function(){
+  if(!currentUser){
+    plOpenAuth();
+    setStatus('Log ind først. Så kan betalingen kobles til din konto.');
+    return;
+  }
+
+  window.plSelectedPlan=x;
+  document.getElementById('pl-pay-title').textContent=x==='Lifetime'?'Plate Logic Lifetime':'Plate Logic Pro';
+  document.getElementById('pl-pay-price').textContent=x==='Lifetime'?'149 kr. én gang':'39 kr./md.';
+  document.getElementById('pl-pay-btn').textContent=x==='Lifetime'?'Køb Lifetime':'Fortsæt til betaling';
+  document.getElementById('pl-pay-modal').style.display='flex';
+};
+
+window.plOpenPortal=async function(){
   if(!currentUser){
     plOpenAuth();
     setStatus('Log ind først.');
@@ -931,9 +934,8 @@ if(data?.plan==='pro' || data?.plan==='lifetime'){
     return;
   }
 
- window.location.href=data.url;
+  window.location.href=data.url;
 };
-    };
   window.plClosePay=function(){document.getElementById('pl-pay-modal').style.display='none'};
   window.plGoToStripe=function(){
     const base=STRIPE[window.plSelectedPlan||'Pro'];
