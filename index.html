@@ -877,6 +877,7 @@ setTimeout(()=>{
     }
 
     currentEntitlement=data||null;
+    plRefreshPlan();
 
 if(data?.plan==='pro' || data?.plan==='lifetime'){
       localStorage.setItem(pk,data.plan);
