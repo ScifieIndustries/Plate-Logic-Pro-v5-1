@@ -842,9 +842,13 @@ document.getElementById('pl-auth-otp-input').value='';
     plCloseAuth();
   },500);
 };
-  window.plSignOut=async function(){
+ window.plSignOut=async function(){
     if(sb)await sb.auth.signOut();
-  };
+    currentUser=null;
+    currentEntitlement=null;
+    plRefreshPlan();
+    renderAuth();
+};
 
   async function loadEntitlement(){
     currentEntitlement=null;
