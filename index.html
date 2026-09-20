@@ -290,7 +290,7 @@
 .pl-auth-status{font-size:12px;min-height:18px;margin-top:8px}
 </style>
 </head>
-<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p>Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug, eller køb Lifetime én gang.</p><div id="pl-plan-actions" class="pl-plan-actions"><button id="pl-pro-action" class="pl-pro">Pro · 39 kr./md.</button><button class="pl-life" onclick="plOpenPay('Lifetime')">Lifetime · 149 kr.</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
+<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p>Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.</p><div id="pl-plan-actions" class="pl-plan-actions"><button id="pl-pro-action" class="pl-pro">Pro · 39 kr./md.</button><button class="pl-life" onclick="plOpenPay('Annual')">Pro · 299 kr./år</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
 
 <div id="pl-auth-modal" class="pl-auth-backdrop" onclick="if(event.target===this)plCloseAuth()"><div class="pl-auth-modal">
   <h2>Log ind på Plate Logic</h2>
@@ -745,7 +745,7 @@ if ('serviceWorker' in navigator) {
 <script>
 (function(){
   const L=5, pk='plateLogicPlan', uk='plateLogicFreeUses';
-  const STRIPE={Pro:'https://buy.stripe.com/eVqbJ26U31Fb7Wr51idEs00',Lifetime:'https://buy.stripe.com/6oUdRaguD97DccH0L2dEs01'};
+  const STRIPE={Pro:'https://buy.stripe.com/eVqbJ26U31Fb7Wr51idEs00',Annual:'https://buy.stripe.com/aFa00ka6fcjP0tZeBSdEs02'};
   const SUPABASE_URL='https://gpiavzcsyrnrvtfxaetp.supabase.co';
   const SUPABASE_PUBLISHABLE_KEY='sb_publishable_AQLE5oe-fUWOIPwmISPE6A_JY9jNV9d';
   let sb=null;
@@ -911,9 +911,9 @@ if(data?.plan==='pro' || data?.plan==='lifetime'){
   }
 
   window.plSelectedPlan=x;
-  document.getElementById('pl-pay-title').textContent=x==='Lifetime'?'Plate Logic Lifetime':'Plate Logic Pro';
-  document.getElementById('pl-pay-price').textContent=x==='Lifetime'?'149 kr. én gang':'39 kr./md.';
-  document.getElementById('pl-pay-btn').textContent=x==='Lifetime'?'Køb Lifetime':'Fortsæt til betaling';
+  document.getElementById('pl-pay-title').textContent='Plate Logic Pro';
+  document.getElementById('pl-pay-price').textContent=x==='Annual'?'299 kr./år':'39 kr./md.';
+  document.getElementById('pl-pay-btn').textContent='Fortsæt til betaling';
   document.getElementById('pl-pay-modal').style.display='flex';
 };
 
