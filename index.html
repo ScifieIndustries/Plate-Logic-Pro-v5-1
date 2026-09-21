@@ -527,6 +527,12 @@ const sidesBox = document.getElementById('sides');
 sidesBox.innerHTML = Object.entries(SIDES).map(([k,v])=>
   `<label class="check-item"><input type="checkbox" value="${k}"> ${v.label}</label>`
 ).join('');
+window.plRefreshSideLabels = function(){
+  if(typeof window.plSetLanguage==='function'){
+    const lang=localStorage.getItem('plateLogicLang')||'en';
+    window.plSetLanguage(lang);
+  }
+};
 
 document.getElementById('sauce').addEventListener('change', (e)=>{
   document.getElementById('customSauceBlock').classList.toggle('show', e.target.value === 'custom');
@@ -1141,6 +1147,11 @@ if(proAction){
     localStorage.setItem('plateLogicLang',selected);
     document.documentElement.lang=selected;
     walk(document.body,selected==='da');
+    document.querySelectorAll('#sides .check-item').forEach(label=>{
+      const text=label.textContent.trim();
+      if(selected==='da' && text==='Quick pickles') label.childNodes[label.childNodes.length-1].nodeValue=' Hurtigsylte';
+      if(selected==='en' && text==='Hurtigsylte') label.childNodes[label.childNodes.length-1].nodeValue=' Quick pickles';
+    });
     const da=document.getElementById('pl-da'), en=document.getElementById('pl-en');
     if(da)da.classList.toggle('active',selected==='da');
     if(en)en.classList.toggle('active',selected==='en');
