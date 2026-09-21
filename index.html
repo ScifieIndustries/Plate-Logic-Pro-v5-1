@@ -352,13 +352,13 @@
     </div>
   </div>
 
-  <h2 class="section-title">Two real plates, worked through</h2>
+  <h2 class="section-title" data-pl-en="Two real plates, worked through" data-pl-da="To rigtige tallerkener, gennemgået">Two real plates, worked through</h2>
   <div class="rule-steps" style="margin-bottom:44px;">
     <div class="example-box">
-      <b>Seared steak, béarnaise.</b> The béarnaise already brings fat and acid, so more richness or more sharpness both miss the point. What's missing is color and freshness — shaved fennel instead of another pile of green beans, so the plate doesn't just taste balanced, it looks lifted.
+      <b data-pl-en="Seared steak, béarnaise." data-pl-da="Stegt steak med béarnaise.">Seared steak, béarnaise.</b> <span data-pl-en="The béarnaise already brings fat and acid, so more richness or more sharpness both miss the point. What's missing is color and freshness — shaved fennel instead of another pile of green beans, so the plate doesn't just taste balanced, it looks lifted." data-pl-da="Béarnaisen tilfører allerede fedme og syre, så mere fylde eller mere syre rammer ved siden af. Det, der mangler, er farve og friskhed — tyndtskåret fennikel i stedet for endnu en portion grønne bønner, så tallerkenen ikke bare smager af balance, men også ser friskere og lettere ud.">The béarnaise already brings fat and acid, so more richness or more sharpness both miss the point. What's missing is color and freshness — shaved fennel instead of another pile of green beans, so the plate doesn't just taste balanced, it looks lifted.</span>
     </div>
     <div class="example-box">
-      <b>Stjerneskud/Shootingstar.</b> Built on a rich pink dressing, toasted bread, fish and shrimp — everything on this plate reads red and heavy. It needs acid (lemon) it doesn't have yet, and a deliberate green element — asparagus, cucumber, pea shoots — or the whole thing looks like one color from across the room.
+      <b data-pl-en="Stjerneskud/Shootingstar." data-pl-da="Stjerneskud.">Stjerneskud/Shootingstar.</b> <span data-pl-en="Built on a rich pink dressing, toasted bread, fish and shrimp — everything on this plate reads red and heavy. It needs acid (lemon) it doesn't have yet, and a deliberate green element — asparagus, cucumber, pea shoots — or the whole thing looks like one color from across the room." data-pl-da="Bygget på en fyldig pink dressing, ristet brød, fisk og rejer — hele tallerkenen fremstår rød og tung. Den mangler syre (citron) og et bevidst grønt element — asparges, agurk eller ærteskud — ellers ser hele tallerkenen ud som én farve på afstand.">Built on a rich pink dressing, toasted bread, fish and shrimp — everything on this plate reads red and heavy. It needs acid (lemon) it doesn't have yet, and a deliberate green element — asparagus, cucumber, pea shoots — or the whole thing looks like one color from across the room.</span>
     </div>
   </div>
 
@@ -1173,6 +1173,9 @@ if(proAction){
 
   function setLanguage(lang){
     const selected=lang==='da'?'da':'en';
+    document.querySelectorAll('[data-pl-en]').forEach(el=>{
+      el.textContent=selected==='da'?el.getAttribute('data-pl-da'):el.getAttribute('data-pl-en');
+    });
     localStorage.setItem('plateLogicLang',selected);
     document.documentElement.lang=selected;
     walk(document.body,selected==='da');
