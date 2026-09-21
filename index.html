@@ -1023,9 +1023,9 @@ if(proAction){
 </script>
 <style id="pl-i18n-style">
 #pl-language{position:absolute;top:12px;right:12px;display:flex;gap:4px}
-#pl-language button{background:#182019;border:1px solid #37443c;color:#efeee7;border-radius:2px;padding:7px 8px;font:500 12px 'IBM Plex Sans',sans-serif;cursor:pointer}
-#pl-language button:hover{border-color:#c99a44}
-#pl-language button.active{border-color:#c99a44;color:#c99a44}
+#pl-language a{background:#182019;border:1px solid #37443c;color:#efeee7;border-radius:2px;padding:7px 8px;font:500 12px 'IBM Plex Sans',sans-serif;cursor:pointer;text-decoration:none}
+#pl-language a:hover{border-color:#c99a44}
+#pl-language a.active{border-color:#c99a44;color:#c99a44}
 #pl-planbar{position:relative;padding-right:105px}
 @media(max-width:520px){#pl-language{top:10px;right:10px;font-size:11px;padding:6px 7px}.pl-planbar{padding-right:95px!important}}
 </style>
@@ -1121,7 +1121,7 @@ if(proAction){
   }
 
   function applyLang(lang){
-    window.plSetLanguage(lang);
+    setLanguage(lang);
   }
 
   function addButton(){
@@ -1129,11 +1129,11 @@ if(proAction){
     if(!bar || document.getElementById('pl-language')) return;
     const wrap=document.createElement('div');
     wrap.id='pl-language';
-    wrap.innerHTML='<button type="button" id="pl-da" onclick="window.plSetLanguage(\'da\');return false;">🇩🇰 Dansk</button><button type="button" id="pl-en" onclick="window.plSetLanguage(\'en\');return false;">🇬🇧 English</button>';
+    wrap.innerHTML='<a id="pl-da" href="?lang=da">🇩🇰 Dansk</a><a id="pl-en" href="?lang=en">🇬🇧 English</a>';
     bar.appendChild(wrap);
   }
 
-  window.plSetLanguage=function(lang){
+  function setLanguage(lang){
     const selected=lang==='da'?'da':'en';
     localStorage.setItem('plateLogicLang',selected);
     document.documentElement.lang=selected;
@@ -1141,7 +1141,7 @@ if(proAction){
     const da=document.getElementById('pl-da'), en=document.getElementById('pl-en');
     if(da)da.classList.toggle('active',selected==='da');
     if(en)en.classList.toggle('active',selected==='en');
-  };
+  }
 
   const obs=new MutationObserver(muts=>{
     const da=localStorage.getItem('plateLogicLang')==='da';
@@ -1153,6 +1153,8 @@ if(proAction){
   window.addEventListener('DOMContentLoaded',()=>{
     addButton();
     obs.observe(document.body,{childList:true,subtree:true});
+    const requested=new URLSearchParams(window.location.search).get('lang');
+    if(requested==='da'||requested==='en') localStorage.setItem('plateLogicLang',requested);
     const saved=localStorage.getItem('plateLogicLang');
     const lang=saved||((navigator.language||'').toLowerCase().startsWith('da')?'da':'en');
     applyLang(lang);
