@@ -676,6 +676,8 @@ function plateIt(){
     </div>
   `;
 
+  if(typeof window.plSetLanguage==='function') window.plSetLanguage(localStorage.getItem('plateLogicLang')||'en');
+
   renderPlate(protein, sauce, sides);
 
   const dishName = `${protein.label} + ${sauce.label}`;
@@ -1075,7 +1077,18 @@ if(proAction){
     "Kunne ikke åbne abonnementssiden.":"Kunne ikke åbne abonnementssiden.","Log ind først.":"Log ind først.",
     "Log ind først. Så kan betalingen kobles til din konto.":"Log ind først. Så kan betalingen kobles til din konto.",
     "Annuller abonnement":"Annuller abonnement","Ubegrænset brug er slået til.":"Ubegrænset brug er slået til.","Lifetime-adgang er slået til.":"Lifetime-adgang er slået til.",
-    "Gratis: ":"Gratis: "," analyser tilbage på denne enhed.":" analyser tilbage på denne enhed."
+    "Gratis: ":"Gratis: "," analyser tilbage på denne enhed.":" analyser tilbage på denne enhed.",
+    "pickled shallots or red onion":"syltede skalotteløg eller rødløg","a sherry vinegar drizzle":"et stænk sherryeddike","cornichons or mustard seed":"cornichoner eller sennepsfrø","a spoon of salsa verde":"en skefuld salsa verde",
+    "a quick apple or cider slaw":"en hurtig æble- eller ciderslaw","pickled mustard seeds":"syltede sennepsfrø","a cider vinegar gastrique":"en gastrique med cidereddike",
+    "pickled fennel or radish":"syltet fennikel eller radise","a squeeze of lemon-caper butter":"lidt citron-kapersmør","a cider gastrique":"en cidergastrique",
+    "a lemon or grapefruit wedge":"en skive citron eller grapefrugt","pickled cucumber":"syltet agurk","caper berries":"kapersbær","a dill-yogurt spoon":"en skefuld dildyoghurt",
+    "a citrus vinaigrette drizzle":"et stænk citrusvinaigrette","pickled onions":"syltede løg","a hit of sumac or lemon zest":"lidt sumak eller citronskal",
+    "pea shoots or micro herbs":"ærteskud eller mikrourter","blanched asparagus tips or watercress":"blancherede aspargesspidser eller brøndkarse","a herb oil drizzle":"et stænk urteolie",
+    "shaved fennel":"tyndtskåret fennikel","crème fraîche or yogurt dot":"en lille klat crème fraîche eller yoghurt","thin radish slices":"tynde radiseskiver",
+    "pomegranate seeds":"granatæblekerner","pickled red onion":"syltede rødløg","thin chili or paprika oil":"tynd chili- eller paprikaolie",
+    "pickled red cabbage":"syltet rødkål","a few blackberries or blueberries":"et par brombær eller blåbær","shaved purple radish or shiso":"tyndtskåret lilla radise eller shiso",
+    "a curl of lemon or grapefruit zest":"en strimmel citron- eller grapefrugtskal","charred corn or a mango slaw":"grillet majs eller mangoslaw","a saffron or turmeric oil drizzle":"et stænk safran- eller gurkemejeolie",
+    "citrus segments":"citrusfrugt i både","a bright herb oil":"en frisk urteolie","charred corn or squash purée":"grillet majs eller græskarpuré"
   };
 
   const REGEX = [
