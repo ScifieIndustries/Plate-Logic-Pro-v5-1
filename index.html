@@ -1094,6 +1094,8 @@ if(proAction){
 
   function toDa(s){
     if(!s) return s;
+    const near=s.match(/^(?:Near|I nærheden af)\\s+(.+)$/i);
+    if(near) return toDa(near[1]);
     if(DICT[s]) return DICT[s];
     for(const [re,repl] of REGEX){ if(re.test(s)) return s.replace(re,repl); }
     let out=s;
