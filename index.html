@@ -511,7 +511,7 @@ const SIDES = {
   quinoa:  {label:"Quinoa", richness:0, color:"beige"},
   corn:    {label:"Grilled corn", richness:0, color:"yellow"},
   redcabbage:{label:"Red cabbage slaw", richness:0, color:"purple"},
-  pickles: {label:"Quick pickles", richness:0, color:"green"},
+  pickles: {label:"Pickles", richness:0, color:"green"},
 };
 let customSides = [];
 
@@ -1067,7 +1067,7 @@ if(proAction){
     "Steak / red meat":"Steak / rødt kød","Lamb":"Lam","Duck":"And","Pork":"Svinekød","Pork belly":"Flæskeside","Chicken":"Kylling","Turkey":"Kalkun","Salmon":"Laks","White fish":"Hvid fisk","White fish in batter":"Paneret hvid fisk","Shellfish / shrimp":"Skaldyr / rejer","Tuna":"Tun","Egg-based":"Æggebaseret","Vegetarian / tofu":"Vegetarisk / tofu","Mushroom (as main)":"Svampe som hovedingrediens","Cauliflower (as main)":"Blomkål som hovedingrediens","Beans / legumes":"Bønner / bælgfrugter",
     "Fried":"Stegt","Seared / pan-fried":"Stegt på pande","Grilled":"Grillet","Roasted":"Ovnbagt","Braised / slow-cooked":"Braiseret / langtidskogt","Steamed":"Dampet","Raw / cured":"Rå / saltet","Poached":"Pocheret",
     "No sauce":"Ingen sauce","Béarnaise":"Béarnaise","Hollandaise":"Hollandaise","Cream sauce":"Flødesauce","Brown butter":"Brunet smør","Beurre blanc":"Beurre blanc","Gravy / jus":"Sky / jus","Tomato-based":"Tomatbaseret","Vinaigrette":"Vinaigrette","Soy / teriyaki glaze":"Soja / teriyaki-glaze","Miso glaze":"Miso-glaze","Rich pink/seafood dressing":"Fyldig pink/seafood-dressing","Chimichurri":"Chimichurri","Pesto":"Pesto","Curry sauce":"Karrysauce","Harissa / chili sauce":"Harissa / chilisauce","Fruit gastrique":"Frugtgastrique","Other — describe it...":"Andet — beskriv den...",
-    "Potatoes / mash":"Kartofler / mos","Fries":"Pommes frites","Rice":"Ris","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Quick pickles":"Hurtigsylte",
+    "Potatoes / mash":"Kartofler / mos","Fries":"Pommes frites","Rice":"Ris","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Pickles":"Syltet agurk",
     "Login er ikke konfigureret endnu.":"Login er ikke konfigureret endnu.","Indtast en gyldig e-mailadresse.":"Indtast en gyldig e-mailadresse.","Sender kode...":"Sender kode...","Der opstod en fejl. Prøv igen.":"Der opstod en fejl. Prøv igen.",
     "8-cifret kode sendt. Tjek din e-mail.":"8-cifret kode sendt. Tjek din e-mail.","Indtast din e-mailadresse.":"Indtast din e-mailadresse.","Indtast den 8-cifrede kode.":"Indtast den 8-cifrede kode.",
     "Logger ind...":"Logger ind...","Koden er forkert eller udløbet. Prøv igen.":"Koden er forkert eller udløbet. Prøv igen.","Du er logget ind.":"Du er logget ind.",
@@ -1092,10 +1092,10 @@ if(proAction){
   ];
 
   const labelMap = {
-    "Fries":"Pommes frites","Rice":"Ris","Potatoes / mash":"Kartofler / mos","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Quick pickles":"Hurtigsylte",
+    "Fries":"Pommes frites","Rice":"Ris","Potatoes / mash":"Kartofler / mos","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Pickles":"Syltet agurk",
     "Steak / red meat":"Steak / rødt kød","Lamb":"Lam","Duck":"And","Pork":"Svinekød","Pork belly":"Flæskeside","Chicken":"Kylling","Turkey":"Kalkun","Salmon":"Laks","White fish":"Hvid fisk","White fish in batter":"Paneret hvid fisk","Shellfish / shrimp":"Skaldyr / rejer","Tuna":"Tun","Egg-based":"Æggebaseret","Vegetarian / tofu":"Vegetarisk / tofu","Mushroom (as main)":"Svampe som hovedingrediens","Cauliflower (as main)":"Blomkål som hovedingrediens","Beans / legumes":"Bønner / bælgfrugter",
     "Fried":"Stegt","Seared / pan-fried":"Stegt på pande","Grilled":"Grillet","Roasted":"Ovnbagt","Braised / slow-cooked":"Braiseret / langtidskogt","Steamed":"Dampet","Raw / cured":"Rå / saltet","Poached":"Pocheret",
-    "Fries":"Pommes frites","Rice":"Ris","Potatoes / mash":"Kartofler / mos","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Quick pickles":"Hurtigsylte"
+    "Fries":"Pommes frites","Rice":"Ris","Potatoes / mash":"Kartofler / mos","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Pickles":"Syltet agurk"
   };
 
   function toDa(s){
@@ -1149,8 +1149,8 @@ if(proAction){
     walk(document.body,selected==='da');
     document.querySelectorAll('#sides .check-item').forEach(label=>{
       const text=label.textContent.trim();
-      if(selected==='da' && text==='Quick pickles') label.childNodes[label.childNodes.length-1].nodeValue=' Hurtigsylte';
-      if(selected==='en' && text==='Hurtigsylte') label.childNodes[label.childNodes.length-1].nodeValue=' Quick pickles';
+      if(selected==='da' && text==='Quick pickles') label.childNodes[label.childNodes.length-1].nodeValue=' Syltet agurk';
+      if(selected==='en' && text==='Hurtigsylte') label.childNodes[label.childNodes.length-1].nodeValue=' Pickles';
     });
     const da=document.getElementById('pl-da'), en=document.getElementById('pl-en');
     if(da)da.classList.toggle('active',selected==='da');
