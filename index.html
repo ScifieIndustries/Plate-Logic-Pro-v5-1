@@ -1014,5 +1014,134 @@ if(proAction){
     initAuth();
   });
 })();
-</script></body>
+</script>
+<style id="pl-i18n-style">
+#pl-language{position:absolute;top:12px;right:12px;background:#182019;border:1px solid #37443c;color:#efeee7;border-radius:2px;padding:7px 9px;font:500 12px 'IBM Plex Sans',sans-serif;cursor:pointer}
+#pl-language:hover{border-color:#c99a44}
+#pl-planbar{position:relative;padding-right:105px}
+@media(max-width:520px){#pl-language{top:10px;right:10px;font-size:11px;padding:6px 7px}.pl-planbar{padding-right:95px!important}}
+</style>
+<script id="pl-i18n">
+(function(){
+  const DICT = {
+    "FREE":"GRATIS","Plate Logic":"Plate Logic","Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.":"Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.",
+    "Pro · 39 kr./md.":"Pro · 39 kr./md.","Log ind med e-mail":"Log ind med e-mail","Log ud":"Log ud",
+    "Plate Logic Pro":"Plate Logic Pro","Du sendes videre til Stripe for sikker betaling.":"Du sendes videre til Stripe for sikker betaling.",
+    "Fortsæt til betaling":"Fortsæt til betaling","Luk":"Luk","Log ind på Plate Logic":"Log ind på Plate Logic",
+    "Indtast din e-mail. Du får en 8-cifret kode på mail.":"Indtast din e-mail. Du får en 8-cifret kode på mail.",
+    "Send kode":"Send kode","Log ind":"Log ind","8-cifret kode":"8-cifret kode",
+    "Try it — jump to the tool":"Prøv det — gå til værktøjet",
+    "A finishing check for anyone who cooks well but wants their plate to look like it too. It runs on one rule, taken from years of plating dishes to order: figure out what's heavy, add something to balance it, then check the color reads right.":"Et sidste tjek for dig, der godt kan lave mad, men gerne vil have tallerkenen til at se lige så god ud. Det bygger på én enkel regel: find det tunge, tilføj noget der skaber balance, og tjek til sidst farverne.",
+    "1. Heavy":"1. Fylde","Heavy":"Fylde","Name what's doing the rich, fatty, or dense work on the plate — the sauce, the cooking method, the protein itself.":"Find det, der giver fylde, fedme eller tyngde på tallerkenen — saucen, tilberedningsmetoden eller selve proteinet.",
+    "2. Balance":"2. Balance","If the richness isn't matched by acid, something sharp needs to cut through it — not more richness.":"Hvis fylden ikke modsvares af syre, skal noget syrligt skære igennem — ikke mere fylde.",
+    "3. Contrast":"3. Kontrast","Contrast":"Kontrast","Check the color last. If the plate reads as one dominant color, add a garnish that visually pops against it.":"Tjek farven til sidst. Hvis tallerkenen domineres af én farve, så tilføj noget, der giver en tydelig visuel kontrast.",
+    "In practice:":"I praksis:","Why plates fall flat":"Hvorfor tallerkener kan virke flade",
+    "It tastes right, looks flat":"Det smager rigtigt, men ser fladt ud",
+    "The dish is cooked well but reads as one dull color and one texture — nothing tells the eye \"this was considered.\"":"Maden er tilberedt godt, men har én kedelig farve og én tekstur — intet fortæller øjet, at der er tænkt over tallerkenen.",
+    "Guessing at acid":"At gætte på syre",
+    "Hard to tell if a dish already has enough sharpness from the sauce, or if it actually needs something added to cut through it.":"Det kan være svært at vide, om saucen allerede giver nok syre, eller om der faktisk mangler noget, der kan skære igennem.",
+    "No feel for the right garnish":"Ingen fornemmelse for den rigtige garnish",
+    "Herbs on everything isn't a system — the right garnish depends on what's already rich, acidic, and colored on that specific plate.":"Urter på alt er ikke et system — den rigtige garnish afhænger af, hvad der allerede er fyldigt, syrligt og farverigt på netop den tallerken.",
+    "Two real plates, worked through":"To rigtige tallerkener, gennemgået",
+    "Seared steak, béarnaise.":"Stegt steak med béarnaise.","Stjerneskud/Shootingstar.":"Stjerneskud.",
+    "Try it on your plate":"Prøv det på din tallerken","Protein":"Protein","Cooking method":"Tilberedningsmetode","Sauce or dressing":"Sauce eller dressing",
+    "Describe it":"Beskriv den","Richness (fat)":"Fylde (fedt)","Light":"Let","Rich":"Fyldig","Acid":"Syre","Flat":"Flad","Sharp":"Syrlig",
+    "Dominant color":"Dominerende farve","Brown":"Brun","Golden":"Gylden","Red":"Rød","Pink":"Pink","White / pale":"Hvid / lys","Green":"Grøn","Yellow":"Gul","Purple":"Lilla","Dark":"Mørk",
+    "Sides already on the plate":"Tilbehør allerede på tallerkenen","Beige":"Beige","Orange":"Orange","Add":"Tilføj","add another side...":"tilføj andet tilbehør...",
+    "Plate it":"Anret","Fill in the dish, then hit \"Plate it.\"":"Udfyld retten og tryk derefter på \"Anret\".",
+    "Copy this plate as text":"Kopiér denne tallerken som tekst","Copied.":"Kopieret.","Plates you've checked this session":"Tallerkener, du har tjekket i denne session","Copy":"Kopiér",
+    "Steak / red meat":"Steak / rødt kød","Lamb":"Lam","Duck":"And","Pork":"Svinekød","Pork belly":"Flæskeside","Chicken":"Kylling","Turkey":"Kalkun","Salmon":"Laks","White fish":"Hvid fisk","White fish in batter":"Paneret hvid fisk","Shellfish / shrimp":"Skaldyr / rejer","Tuna":"Tun","Egg-based":"Æggebaseret","Vegetarian / tofu":"Vegetarisk / tofu","Mushroom (as main)":"Svampe som hovedingrediens","Cauliflower (as main)":"Blomkål som hovedingrediens","Beans / legumes":"Bønner / bælgfrugter",
+    "Fried":"Stegt","Seared / pan-fried":"Stegt på pande","Grilled":"Grillet","Roasted":"Ovnbagt","Braised / slow-cooked":"Braiseret / langtidskogt","Steamed":"Dampet","Raw / cured":"Rå / saltet","Poached":"Pocheret",
+    "No sauce":"Ingen sauce","Béarnaise":"Béarnaise","Hollandaise":"Hollandaise","Cream sauce":"Flødesauce","Brown butter":"Brunet smør","Beurre blanc":"Beurre blanc","Gravy / jus":"Sky / jus","Tomato-based":"Tomatbaseret","Vinaigrette":"Vinaigrette","Soy / teriyaki glaze":"Soja / teriyaki-glaze","Miso glaze":"Miso-glaze","Rich pink/seafood dressing":"Fyldig pink/seafood-dressing","Chimichurri":"Chimichurri","Pesto":"Pesto","Curry sauce":"Karrysauce","Harissa / chili sauce":"Harissa / chilisauce","Fruit gastrique":"Frugtgastrique","Other — describe it...":"Andet — beskriv den...",
+    "Potatoes / mash":"Kartofler / mos","Fries":"Pommes frites","Rice":"Ris","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Quick pickles":"Hurtigsylte",
+    "Login er ikke konfigureret endnu.":"Login er ikke konfigureret endnu.","Indtast en gyldig e-mailadresse.":"Indtast en gyldig e-mailadresse.","Sender kode...":"Sender kode...","Der opstod en fejl. Prøv igen.":"Der opstod en fejl. Prøv igen.",
+    "8-cifret kode sendt. Tjek din e-mail.":"8-cifret kode sendt. Tjek din e-mail.","Indtast din e-mailadresse.":"Indtast din e-mailadresse.","Indtast den 8-cifrede kode.":"Indtast den 8-cifrede kode.",
+    "Logger ind...":"Logger ind...","Koden er forkert eller udløbet. Prøv igen.":"Koden er forkert eller udløbet. Prøv igen.","Du er logget ind.":"Du er logget ind.",
+    "Kunne ikke hente din Pro-status. Prøver igen…":"Kunne ikke hente din Pro-status. Prøver igen…","Åbner abonnement...":"Åbner abonnement...",
+    "Kunne ikke åbne abonnementssiden.":"Kunne ikke åbne abonnementssiden.","Log ind først.":"Log ind først.",
+    "Log ind først. Så kan betalingen kobles til din konto.":"Log ind først. Så kan betalingen kobles til din konto.",
+    "Annuller abonnement":"Annuller abonnement","Ubegrænset brug er slået til.":"Ubegrænset brug er slået til.","Lifetime-adgang er slået til.":"Lifetime-adgang er slået til.",
+    "Gratis: ":"Gratis: "," analyser tilbage på denne enhed.":" analyser tilbage på denne enhed."
+  };
+
+  const REGEX = [
+    [/^The weight on this plate is coming from (.+)\. That's a rich plate — richness score (\d+), acid score (\d+)\.$/,"Tyngden på denne tallerken kommer fra $1. Det er en fyldig tallerken — fyldescore $2, syrescore $3."],
+    [/^This plate is fairly light across the board — richness score (\d+), acid score (\d+)\. There isn't much to balance out\.$/,"Denne tallerken er forholdsvis let hele vejen rundt — fyldescore $1, syrescore $2. Der er ikke meget, der skal balanceres."],
+    [/^Acid is behind here relative to how rich this plate is\. Something sharp will cut through it rather than add more weight\.$/,"Syren halter bagefter i forhold til, hvor fyldig denne tallerken er. Noget syrligt vil skære igennem i stedet for at tilføre mere fylde."],
+    [/^Acid is already doing enough work — you don't need to fight the richness any further, just keep it in mind if you add anything else\.$/,"Syren gør allerede sit arbejde — du behøver ikke modarbejde fylden yderligere, men hav den i tankerne, hvis du tilføjer noget."],
+    [/^This plate is already reading green\. Add a small pop of red or white instead of piling on more green\.$/,"Denne tallerken fremstår allerede grøn. Tilføj et lille strejf af rødt eller hvidt i stedet for mere grønt."],
+    [/^This plate reads pale overall\. A touch of fresh green will be the difference between \"cooked well\" and \"plated well.\"$/,"Denne tallerken fremstår overordnet lys. Et strejf af frisk grønt kan gøre forskellen mellem godt tilberedt og godt anrettet."],
+    [/^This plate is reading yellow overall\. A small pop of purple or deep red will stop it looking one-note\.$/,"Denne tallerken fremstår overordnet gul. Et lille strejf af lilla eller dybrød forhindrer, at den ser ensformig ud."],
+    [/^This plate is dominated by purple tones\. A touch of yellow or citrus will lift it and give the eye something to land on\.$/,"Denne tallerken domineres af lilla nuancer. Et strejf af gult eller citrus løfter den og giver øjet noget at lande på."],
+    [/^This plate reads dark overall\. A bright, light element will keep it from looking heavy and closed-off\.$/,"Denne tallerken fremstår overordnet mørk. Et lyst element holder den fra at virke tung og lukket."],
+    [/^This plate is dominated by brown, golden or red tones\. A fresh green element will lift it and stop it looking flat and one-note\.$/,"Denne tallerken domineres af brune, gyldne eller røde nuancer. Et frisk grønt element løfter den og forhindrer, at den ser flad og ensformig ud."]
+  ];
+
+  const labelMap = {
+    "Steak / red meat":"Steak / rødt kød","Lamb":"Lam","Duck":"And","Pork":"Svinekød","Pork belly":"Flæskeside","Chicken":"Kylling","Turkey":"Kalkun","Salmon":"Laks","White fish":"Hvid fisk","White fish in batter":"Paneret hvid fisk","Shellfish / shrimp":"Skaldyr / rejer","Tuna":"Tun","Egg-based":"Æggebaseret","Vegetarian / tofu":"Vegetarisk / tofu","Mushroom (as main)":"Svampe som hovedingrediens","Cauliflower (as main)":"Blomkål som hovedingrediens","Beans / legumes":"Bønner / bælgfrugter",
+    "Fried":"Stegt","Seared / pan-fried":"Stegt på pande","Grilled":"Grillet","Roasted":"Ovnbagt","Braised / slow-cooked":"Braiseret / langtidskogt","Steamed":"Dampet","Raw / cured":"Rå / saltet","Poached":"Pocheret"
+  };
+
+  function toDa(s){
+    if(!s) return s;
+    if(DICT[s]) return DICT[s];
+    for(const [re,repl] of REGEX){ if(re.test(s)) return s.replace(re,repl); }
+    let out=s;
+    Object.keys(labelMap).sort((a,b)=>b.length-a.length).forEach(k=>{out=out.split(k).join(labelMap[k]);});
+    return out;
+  }
+
+  function walk(root, da){
+    const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    while(w.nextNode()) nodes.push(w.currentNode);
+    nodes.forEach(n=>{
+      if(!n.parentElement || ['SCRIPT','STYLE'].includes(n.parentElement.tagName)) return;
+      if(!n.dataset.plOrig) n.dataset.plOrig=n.nodeValue;
+      n.nodeValue=da?toDa(n.dataset.plOrig):n.dataset.plOrig;
+    });
+    root.querySelectorAll?.('input,textarea').forEach(el=>{
+      if(el.placeholder){
+        if(!el.dataset.plOrigPlaceholder) el.dataset.plOrigPlaceholder=el.placeholder;
+        el.placeholder=da?toDa(el.dataset.plOrigPlaceholder):el.dataset.plOrigPlaceholder;
+      }
+    });
+  }
+
+  function applyLang(lang){
+    localStorage.setItem('plateLogicLang',lang);
+    document.documentElement.lang=lang;
+    walk(document.body,lang==='da');
+    const b=document.getElementById('pl-language');
+    if(b)b.textContent=lang==='da'?'🇬🇧 English':'🇩🇰 Dansk';
+  }
+
+  function addButton(){
+    const bar=document.getElementById('pl-planbar');
+    if(!bar || document.getElementById('pl-language')) return;
+    const b=document.createElement('button');
+    b.id='pl-language';
+    b.type='button';
+    b.textContent='🇩🇰 Dansk';
+    b.onclick=()=>applyLang((localStorage.getItem('plateLogicLang')||'en')==='da'?'en':'da');
+    bar.appendChild(b);
+  }
+
+  const obs=new MutationObserver(muts=>{
+    const da=localStorage.getItem('plateLogicLang')==='da';
+    muts.forEach(m=>{
+      m.addedNodes.forEach(n=>{if(n.nodeType===1)walk(n,da);});
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded',()=>{
+    addButton();
+    obs.observe(document.body,{childList:true,subtree:true});
+    const saved=localStorage.getItem('plateLogicLang');
+    const lang=saved||((navigator.language||'').toLowerCase().startsWith('da')?'da':'en');
+    applyLang(lang);
+  });
+})();
+</script>
+</body>
 </html>
