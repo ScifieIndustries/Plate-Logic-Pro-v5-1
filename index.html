@@ -620,11 +620,22 @@ function plateIt(){
   const colors = [protein.color, sauce.color, ...sides.map(s=>s.color)].filter(Boolean);
   const {dom, greenCount} = dominantColorGroup(colors);
 
+  const isDa=localStorage.getItem('plateLogicLang')==='da';
+  const labelDa=(s)=>{
+    const map={
+      "Brown gravy":"Brun sovs",
+      "Gravy / jus":"Brun sovs",
+      "Fried":"Stegt",
+      "Pork belly":"Flæskesteg",
+      "Potatoes / mash":"Kartofler / mos"
+    };
+    return map[s]||s;
+  };
   const heavyParts = [];
-  if(sauce.fat >= 6) heavyParts.push(`the ${sauce.label.toLowerCase()}`);
-  if(method.mod >= 2) heavyParts.push(`the ${method.label.toLowerCase()} cooking method`);
-  if(protein.richness >= 6) heavyParts.push(`the ${protein.label.toLowerCase()} itself`);
-  sides.forEach(s=>{ if(s.richness>=2) heavyParts.push(s.label.toLowerCase()); });
+  if(sauce.fat >= 6) heavyParts.push(isDa?labelDa(sauce.label.toLowerCase()==='brown gravy'?'Brown gravy':sauce.label.toLowerCase()):`the ${sauce.label.toLowerCase()}`);
+  if(method.mod >= 2) heavyParts.push(isDa?labelDa(method.label):`the ${method.label.toLowerCase()} cooking method`);
+  if(protein.richness >= 6) heavyParts.push(isDa?labelDa(protein.label):`the ${protein.label.toLowerCase()} itself`);
+  sides.forEach(s=>{ if(s.richness>=2) heavyParts.push(isDa?labelDa(s.label):s.label.toLowerCase()); });
   const heavyText = heavyParts.length
     ? `The weight on this plate is coming from ${heavyParts.join(", ")}. That's a rich plate — richness score ${richness}, acid score ${acid}.`
     : `This plate is fairly light across the board — richness score ${richness}, acid score ${acid}. There isn't much to balance out.`;
