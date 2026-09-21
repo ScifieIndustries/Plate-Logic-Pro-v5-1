@@ -1103,14 +1103,17 @@ if(proAction){
     return out;
   }
 
+  const originalText=new WeakMap();
+
   function walk(root, da){
     const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
     const nodes=[];
     while(w.nextNode()) nodes.push(w.currentNode);
     nodes.forEach(n=>{
       if(!n.parentElement || ['SCRIPT','STYLE'].includes(n.parentElement.tagName)) return;
-      if(!n.dataset.plOrig) n.dataset.plOrig=n.nodeValue;
-      n.nodeValue=da?toDa(n.dataset.plOrig):n.dataset.plOrig;
+      if(!originalText.has(n)) originalText.set(n,n.nodeValue);
+      const original=originalText.get(n);
+      n.nodeValue=da?toDa(original):original;
     });
     root.querySelectorAll?.('input,textarea').forEach(el=>{
       if(el.placeholder){
