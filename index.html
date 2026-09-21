@@ -1022,8 +1022,10 @@ if(proAction){
 })();
 </script>
 <style id="pl-i18n-style">
-#pl-language{position:absolute;top:12px;right:12px;background:#182019;border:1px solid #37443c;color:#efeee7;border-radius:2px;padding:7px 9px;font:500 12px 'IBM Plex Sans',sans-serif;cursor:pointer}
-#pl-language:hover{border-color:#c99a44}
+#pl-language{position:absolute;top:12px;right:12px;display:flex;gap:4px}
+#pl-language button{background:#182019;border:1px solid #37443c;color:#efeee7;border-radius:2px;padding:7px 8px;font:500 12px 'IBM Plex Sans',sans-serif;cursor:pointer}
+#pl-language button:hover{border-color:#c99a44}
+#pl-language button.active{border-color:#c99a44;color:#c99a44}
 #pl-planbar{position:relative;padding-right:105px}
 @media(max-width:520px){#pl-language{top:10px;right:10px;font-size:11px;padding:6px 7px}.pl-planbar{padding-right:95px!important}}
 </style>
@@ -1119,18 +1121,22 @@ if(proAction){
     document.documentElement.lang=lang;
     walk(document.body,lang==='da');
     const b=document.getElementById('pl-language');
-    if(b)b.textContent=lang==='da'?'🇬🇧 English':'🇩🇰 Dansk';
+    if(b){
+  const da=b.querySelector('#pl-da'), en=b.querySelector('#pl-en');
+  if(da)da.classList.toggle('active',lang==='da');
+  if(en)en.classList.toggle('active',lang==='en');
+}
   }
 
   function addButton(){
     const bar=document.getElementById('pl-planbar');
     if(!bar || document.getElementById('pl-language')) return;
-    const b=document.createElement('button');
-    b.id='pl-language';
-    b.type='button';
-    b.textContent='🇩🇰 Dansk';
-    b.onclick=()=>applyLang((localStorage.getItem('plateLogicLang')||'en')==='da'?'en':'da');
-    bar.appendChild(b);
+    const wrap=document.createElement('div');
+    wrap.id='pl-language';
+    wrap.innerHTML='<button type="button" id="pl-da">🇩🇰 Dansk</button><button type="button" id="pl-en">🇬🇧 English</button>';
+    wrap.querySelector('#pl-da').onclick=()=>applyLang('da');
+    wrap.querySelector('#pl-en').onclick=()=>applyLang('en');
+    bar.appendChild(wrap);
   }
 
   const obs=new MutationObserver(muts=>{
