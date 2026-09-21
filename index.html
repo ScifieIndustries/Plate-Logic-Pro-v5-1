@@ -1121,15 +1121,7 @@ if(proAction){
   }
 
   function applyLang(lang){
-    localStorage.setItem('plateLogicLang',lang);
-    document.documentElement.lang=lang;
-    walk(document.body,lang==='da');
-    const b=document.getElementById('pl-language');
-    if(b){
-  const da=b.querySelector('button[data-lang="da"]'), en=b.querySelector('button[data-lang="en"]');
-  if(da)da.classList.toggle('active',lang==='da');
-  if(en)en.classList.toggle('active',lang==='en');
-}
+    window.plSetLanguage(lang);
   }
 
   function addButton(){
@@ -1137,22 +1129,19 @@ if(proAction){
     if(!bar || document.getElementById('pl-language')) return;
     const wrap=document.createElement('div');
     wrap.id='pl-language';
-    wrap.innerHTML='<button type="button" data-lang="da">🇩🇰 Dansk</button><button type="button" data-lang="en">🇬🇧 English</button>';
+    wrap.innerHTML='<button type="button" id="pl-da" onclick="window.plSetLanguage(\'da\');return false;">🇩🇰 Dansk</button><button type="button" id="pl-en" onclick="window.plSetLanguage(\'en\');return false;">🇬🇧 English</button>';
     bar.appendChild(wrap);
   }
 
   window.plSetLanguage=function(lang){
-    applyLang(lang==='da'?'da':'en');
+    const selected=lang==='da'?'da':'en';
+    localStorage.setItem('plateLogicLang',selected);
+    document.documentElement.lang=selected;
+    walk(document.body,selected==='da');
+    const da=document.getElementById('pl-da'), en=document.getElementById('pl-en');
+    if(da)da.classList.toggle('active',selected==='da');
+    if(en)en.classList.toggle('active',selected==='en');
   };
-
-  document.addEventListener('click',function(e){
-    const btn=e.target.closest?.('#pl-language button[data-lang]');
-    if(btn){
-      e.preventDefault();
-      e.stopPropagation();
-      window.plSetLanguage(btn.dataset.lang);
-    }
-  });
 
   const obs=new MutationObserver(muts=>{
     const da=localStorage.getItem('plateLogicLang')==='da';
