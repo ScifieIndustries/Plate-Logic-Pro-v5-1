@@ -302,7 +302,7 @@
 <button class="pl-auth-submit" data-pl-en="Send code" data-pl-da="Send kode" onclick="plSendLoginLink()">Send kode</button>
 
 <div id="pl-auth-otp" style="display:none;margin-top:12px;">
-  <input id="pl-auth-otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="8-cifret kode">
+  <input id="pl-auth-otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="8-digit code">
   <button class="pl-auth-submit" data-pl-en="Log in" data-pl-da="Log ind" onclick="plVerifyOtp()">Log ind</button>
 </div>
 
@@ -1145,6 +1145,24 @@ if(proAction){
 
   const originalText=new WeakMap();
 
+  function translateDynamicText(s){
+    if(!s) return s;
+    const da=localStorage.getItem('plateLogicLang')==='da';
+    const map=da?{
+      'Sender code...':'Sender kode...',
+      '8-digit code sent. Check your email.':'8-cifret kode sendt. Tjek din e-mail.'
+    }:{
+      'Sender kode...':'Sending code...',
+      '8-cifret kode sendt. Tjek din e-mail.':'8-digit code sent. Check your email.'
+    };
+    return map[s]||s;
+  }
+
+  function setAuthPlaceholders(){
+    const input=document.getElementById('pl-auth-otp-input');
+    if(input) input.placeholder=localStorage.getItem('plateLogicLang')==='da'?'8-cifret kode':'8-digit code';
+  }
+
   function walk(root, da){
     const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
     const nodes=[];
@@ -1153,7 +1171,7 @@ if(proAction){
       if(!n.parentElement || ['SCRIPT','STYLE'].includes(n.parentElement.tagName)) return;
       if(!originalText.has(n)) originalText.set(n,n.nodeValue);
       const original=originalText.get(n);
-      n.nodeValue=da?toDa(original):original;
+      n.nodeValue=da?toDa(original):translateDynamicText(original);
     });
     root.querySelectorAll?.('input,textarea').forEach(el=>{
       if(el.placeholder){
@@ -1184,6 +1202,7 @@ if(proAction){
     localStorage.setItem('plateLogicLang',selected);
     document.documentElement.lang=selected;
     walk(document.body,selected==='da');
+    setAuthPlaceholders();
     document.querySelectorAll('#sides .check-item').forEach(label=>{
       const text=label.textContent.trim();
       if(selected==='da' && text==='Quick pickles') label.childNodes[label.childNodes.length-1].nodeValue=' Syltet agurk';
