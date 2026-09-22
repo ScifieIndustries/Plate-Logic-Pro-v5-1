@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Plate Logic">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Plate Logic</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Plate Logic">
+<meta name="theme-color" content="#1c2420">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1c2420;
+    --panel: #232d27;
+    --line: #37443c;
+    --plate: #f6f2ea;
+    --plate-rim: #e2dbc9;
+    --ink: #1c1a15;
+    --ink-soft: #efeee7;
+    --muted: #a9b3ac;
+    --heavy: #c99a44;
+    --balance: #8fa06a;
+    --contrast: #a24b42;
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{-webkit-text-size-adjust:100%;}
+  button,select,input{touch-action:manipulation;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink-soft);
+    font-family:'IBM Plex Sans', sans-serif;
+    padding:env(safe-area-inset-top) 0 calc(64px + env(safe-area-inset-bottom));
+    -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px;}
+
+  /* Hero / teaching section */
+  .hero{
+    border-bottom:1px solid var(--line);
+    padding:48px 20px 40px;
+    margin-bottom:32px;
+  }
+  .hero-inner{max-width:1040px;margin:0 auto;}
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:2.6rem;
+    margin:0 0 10px;
+    color:var(--ink-soft);
+    letter-spacing:-0.01em;
+  }
+  .hero p.lead{
+    margin:0 0 28px;
+    color:var(--muted);
+    font-size:1.02rem;
+    max-width:58ch;
+    line-height:1.6;
+  }
+  .rule-steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:28px;
+  }
+  @media (max-width:700px){ .rule-steps{grid-template-columns:1fr;} }
+  .rule-step{
+    border-left:3px solid var(--line);
+    padding:2px 0 2px 14px;
+  }
+  .rule-step.heavy{border-color:var(--heavy);}
+  .rule-step.balance{border-color:var(--balance);}
+  .rule-step.contrast{border-color:var(--contrast);}
+  .rule-step h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.05rem;
+    margin:0 0 4px;
+  }
+  .rule-step.heavy h3{color:var(--heavy);}
+  .rule-step.balance h3{color:var(--balance);}
+  .rule-step.contrast h3{color:var(--contrast);}
+  .rule-step p{margin:0;font-size:0.88rem;color:var(--muted);line-height:1.5;}
+
+  .example-box{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .example-box b{color:var(--heavy);}
+
+  h2.section-title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.3rem;
+    margin:0 0 18px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:28px;
+  }
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr;}
+  }
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+  }
+  .field{margin-bottom:18px;}
+  .field:last-child{margin-bottom:0;}
+  label.field-label{
+    display:block;
+    font-size:0.78rem;
+    color:var(--muted);
+    margin-bottom:6px;
+    font-weight:500;
+  }
+  select, input[type=text], input[type=range]{
+    width:100%;
+    padding:9px 10px;
+    background:#182019;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    border-radius:var(--radius);
+    font-family:inherit;
+    font-size:0.92rem;
+  }
+  input[type=range]{padding:0;height:22px;}
+  .slider-row{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--muted);margin-top:4px;}
+  .custom-block{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+    display:none;
+  }
+  .custom-block.show{display:block;}
+  .check-list{display:flex;flex-direction:column;gap:6px;}
+  .check-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+  }
+  .check-item input{accent-color:var(--heavy);}
+  .custom-side-row{display:flex;gap:6px;margin-top:8px;}
+  .custom-side-row input[type=text]{flex:1;}
+  .small-btn{
+    padding:9px 12px;
+    background:#182019;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    border-radius:var(--radius);
+    cursor:pointer;
+    font-size:0.85rem;
+    font-family:inherit;
+  }
+  .small-btn:hover{border-color:var(--heavy);}
+  .custom-sides-list{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;}
+  .custom-side-chip{
+    font-size:0.78rem;color:var(--muted);border:1px solid var(--line);
+    padding:4px 8px;border-radius:var(--radius);display:flex;align-items:center;gap:6px;
+  }
+  .custom-side-chip button{
+    background:none;border:none;color:var(--contrast);cursor:pointer;font-size:0.9rem;line-height:1;padding:0;
+  }
+
+  button.go{
+    margin-top:22px;
+    width:100%;
+    padding:12px;
+    background:var(--heavy);
+    border:none;
+    color:#1c1a15;
+    font-weight:600;
+    font-size:0.95rem;
+    border-radius:var(--radius);
+    cursor:pointer;
+    font-family:'IBM Plex Sans', sans-serif;
+  }
+  button.go:hover{background:#d8ab55;}
+
+  .result-area{display:flex;flex-direction:column;gap:22px;}
+  .plate-box{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .plate{
+    width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle at 50% 45%, var(--plate) 0%, var(--plate) 62%, var(--plate-rim) 63%, var(--plate-rim) 100%);
+    position:relative;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06), 0 10px 30px rgba(0,0,0,0.35);
+  }
+  .dot{
+    position:absolute;
+    border-radius:50%;
+  }
+  .empty-note{
+    color:var(--muted);
+    font-size:0.85rem;
+    text-align:center;
+    padding:40px 20px;
+  }
+  .section{
+    border-left:3px solid var(--line);
+    padding:4px 0 4px 16px;
+  }
+  .section.heavy{border-color:var(--heavy);}
+  .section.balance{border-color:var(--balance);}
+  .section.contrast{border-color:var(--contrast);}
+  .section h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.15rem;
+    margin:0 0 6px;
+  }
+  .section.heavy h2{color:var(--heavy);}
+  .section.balance h2{color:var(--balance);}
+  .section.contrast h2{color:var(--contrast);}
+  .section p{
+    margin:0 0 10px;
+    font-size:0.94rem;
+    line-height:1.55;
+    color:var(--ink-soft);
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .chip{
+    border:1px solid var(--line);
+    padding:5px 10px;
+    font-size:0.82rem;
+    border-radius:var(--radius);
+    color:var(--muted);
+  }
+
+  .history{margin-top:8px;}
+  .history-item{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:12px 16px;
+    font-size:0.85rem;
+    color:var(--muted);
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .history-item .desc{color:var(--ink-soft);}
+  .history-actions{display:flex;gap:8px;flex-shrink:0;}
+  .copy-note{font-size:0.78rem;color:var(--balance);margin-top:6px;visibility:hidden;}
+  .copy-note.show{visibility:visible;}
+</style>
+<style>/* Plate Logic Free / Pro */
+.pl-planbar{margin:14px 0 18px;padding:14px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.04)}.pl-planbar h3{margin:0 0 6px;font-size:16px}.pl-planbar p{margin:0 0 12px;opacity:.78;font-size:13px;line-height:1.4}.pl-plan-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pl-plan-actions button{border:0;border-radius:12px;padding:11px 9px;font-weight:700}.pl-pro{background:#d9e8d2;color:#1c2420}.pl-life{background:#fff;color:#1c2420}.pl-usage{margin-top:10px;font-size:12px;opacity:.72}.pl-badge{display:inline-block;margin-left:6px;padding:2px 7px;border-radius:999px;font-size:10px;background:rgba(255,255,255,.12)}.pl-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:flex-end;justify-content:center;z-index:9999}.pl-modal{width:min(520px,100%);background:#1c2420;color:#fff;border-radius:22px 22px 0 0;padding:22px}.pl-modal .price{font-size:25px;font-weight:800;margin:14px 0}.pl-modal button{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font-weight:800}.pl-close{background:rgba(255,255,255,.1);color:#fff}</style>
+<style>
+/* Plate Logic account / Supabase auth */
+.pl-auth-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
+.pl-auth-btn{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;border-radius:12px;padding:9px 12px;font-weight:700;cursor:pointer}
+.pl-auth-email{font-size:12px;opacity:.72;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.pl-auth-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.62);display:none;align-items:flex-end;justify-content:center;z-index:10000}
+.pl-auth-modal{width:min(520px,100%);background:#1c2420;color:#fff;border-radius:22px 22px 0 0;padding:22px;box-sizing:border-box}
+.pl-auth-modal h2{margin:0 0 8px}.pl-auth-modal p{font-size:13px;line-height:1.45;opacity:.78}
+.pl-auth-modal input{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.18);background:#111814;color:#fff;border-radius:12px;padding:13px;margin:8px 0}
+.pl-auth-submit{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font-weight:800;background:#d9e8d2;color:#1c2420;cursor:pointer}
+.pl-auth-close{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font-weight:800;background:rgba(255,255,255,.1);color:#fff;cursor:pointer}
+.pl-auth-status{font-size:12px;min-height:18px;margin-top:8px}
+</style>
+</head>
+<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p data-pl-en="Try Plate Logic for free. Upgrade to Pro for unlimited use." data-pl-da="Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.">Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.</p><div id="pl-plan-actions" class="pl-plan-actions"><button id="pl-pro-action" class="pl-pro">Pro · 39 kr./md.</button><button id="pl-annual-action" class="pl-life">Pro · 299 kr./år</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" data-pl-en="Log in with email" data-pl-da="Log ind med e-mail" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
+
+<div id="pl-auth-modal" class="pl-auth-backdrop" onclick="if(event.target===this)plCloseAuth()"><div class="pl-auth-modal">
+  <h2 data-pl-en="Log in to Plate Logic" data-pl-da="Log ind på Plate Logic">Log ind på Plate Logic</h2>
+
+<p data-pl-en="Enter your email. You’ll receive an 8-digit code by email." data-pl-da="Indtast din e-mail. Du får en 8-cifret kode på mail.">Indtast din e-mail. Du får en 8-cifret kode på mail.</p>
+
+<input id="pl-auth-email-input" type="email" autocomplete="email" placeholder="din@email.dk">
+
+<button class="pl-auth-submit" data-pl-en="Send code" data-pl-da="Send kode" onclick="plSendLoginLink()">Send kode</button>
+
+<div id="pl-auth-otp" style="display:none;margin-top:12px;">
+  <input id="pl-auth-otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="8-digit code">
+  <button class="pl-auth-submit" data-pl-en="Log in" data-pl-da="Log ind" onclick="plVerifyOtp()">Log ind</button>
+</div>
+
+<div id="pl-auth-status" class="pl-auth-status"></div>
+
+<button class="pl-auth-close" data-pl-en="Close" data-pl-da="Luk" onclick="plCloseAuth()">Luk</button>
+</div></div>
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Plate Logic</h1>
+    <p class="lead" data-pl-en="A finishing check for anyone who cooks well but wants their plate to look like it too. It runs on one rule, taken from years of plating dishes to order: figure out what's heavy, add something to balance it, then check the color reads right." data-pl-da="Et sidste tjek til dig, der kan lave god mad, men gerne vil have tallerkenen til at se lige så godt ud. Det bygger på én regel fra mange års anretning: find det, der fylder, tilføj noget, der skaber balance, og tjek derefter, om farverne fungerer.">Et sidste tjek til dig, der kan lave god mad, men gerne vil have tallerkenen til at se lige så godt ud. Det bygger på én regel fra mange års anretning: find det, der fylder, tilføj noget, der skaber balance, og tjek derefter, om farverne fungerer.</p>
+    <button class="small-btn" style="margin-bottom:28px;" data-pl-en="Try it — jump to the tool" data-pl-da="Prøv det — gå til værktøjet" onclick="document.getElementById('tool-anchor').scrollIntoView({behavior:'smooth'})">Prøv det — gå til værktøjet</button>
+    <div class="rule-steps">
+      <div class="rule-step heavy">
+        <h3 data-pl-en="1. Heavy" data-pl-da="1. Fylde">1. Fylde</h3>
+        <p data-pl-en="Name what's doing the rich, fatty, or dense work on the plate — the sauce, the cooking method, the protein itself." data-pl-da="Find det, der giver fylde på tallerkenen — sovsen, tilberedningsmetoden eller selve proteinet.">Find det, der giver fylde på tallerkenen — sovsen, tilberedningsmetoden eller selve proteinet.</p>
+      </div>
+      <div class="rule-step balance">
+        <h3 data-pl-en="2. Balance" data-pl-da="2. Balance">2. Balance</h3>
+        <p data-pl-en="If the richness isn't matched by acid, something sharp needs to cut through it — not more richness." data-pl-da="Hvis fylden ikke modsvares af syre, skal noget skarpt skære igennem — ikke mere fylde.">Hvis fylden ikke modsvares af syre, skal noget skarpt skære igennem — ikke mere fylde.</p>
+      </div>
+      <div class="rule-step contrast">
+        <h3 data-pl-en="3. Contrast" data-pl-da="3. Kontrast">3. Kontrast</h3>
+        <p data-pl-en="Check the color last. If the plate reads as one dominant color, add a garnish that visually pops against it." data-pl-da="Tjek farven til sidst. Hvis tallerkenen fremstår i én dominerende farve, så tilføj en garniture, der skiller sig visuelt ud.">Tjek farven til sidst. Hvis tallerkenen fremstår i én dominerende farve, så tilføj en garniture, der skiller sig visuelt ud.</p>
+      </div>
+    </div>
+    <div class="example-box" data-pl-en="In practice: a seared steak with béarnaise is already rich and already acidic — the béarnaise brings its own fat and tang — so the fix is a fresh, light color: shaved fennel over more green beans. A dish like Stjerneskud/Shootingstar, built on a rich pink dressing, needs both acid (lemon) and a deliberate green element — asparagus, cucumber, pea shoots — because the whole plate reads red otherwise." data-pl-da="I praksis: En stegt steak med béarnaise er allerede fyldig og syrlig — béarnaisen tilfører selv fedme og syre — så løsningen er en frisk, let farve: tyndtskåret fennikel i stedet for flere grønne bønner. En ret som stjerneskud, bygget på en fyldig pink dressing, har brug for både syre (citron) og et bevidst grønt element — asparges, agurk eller ærteskud — fordi hele tallerkenen ellers fremstår rød.">
+      <b>I praksis:</b> En stegt steak med béarnaise er allerede fyldig og syrlig — béarnaisen tilfører selv fedme og syre — så løsningen er en frisk, let farve: tyndtskåret fennikel i stedet for flere grønne bønner. En ret som stjerneskud, bygget på en fyldig pink dressing, har brug for både syre (citron) og et bevidst grønt element — asparges, agurk eller ærteskud — fordi hele tallerkenen ellers fremstår rød.
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <h2 class="section-title" style="margin-top:40px;" data-pl-en="Why plates fall flat" data-pl-da="Hvorfor tallerkener kan virke flade">Hvorfor tallerkener kan virke flade</h2>
+  <div class="rule-steps" style="margin-bottom:44px;">
+    <div class="rule-step">
+      <h3 style="color:var(--ink-soft);" data-pl-en="It tastes right, looks flat" data-pl-da="Det smager rigtigt, men ser fladt ud">Det smager rigtigt, men ser fladt ud</h3>
+      <p data-pl-en="The dish is cooked well but reads as one dull color and one texture — nothing tells the eye &quot;this was considered.&quot;" data-pl-da="Retten er godt tilberedt, men fremstår i én kedelig farve og én tekstur — intet fortæller øjet, at der er tænkt over anretningen.">Retten er godt tilberedt, men fremstår i én kedelig farve og én tekstur — intet fortæller øjet, at der er tænkt over anretningen.</p>
+    </div>
+    <div class="rule-step">
+      <h3 style="color:var(--ink-soft);" data-pl-en="Guessing at acid" data-pl-da="At gætte på syren">At gætte på syren</h3>
+      <p data-pl-en="Hard to tell if a dish already has enough sharpness from the sauce, or if it actually needs something added to cut through it." data-pl-da="Det kan være svært at vurdere, om retten allerede har nok syre fra sovsen, eller om der faktisk skal tilføjes noget for at skabe balance.">Det kan være svært at vurdere, om retten allerede har nok syre fra sovsen, eller om der faktisk skal tilføjes noget for at skabe balance.</p>
+    </div>
+    <div class="rule-step">
+      <h3 style="color:var(--ink-soft);" data-pl-en="No feel for the right garnish" data-pl-da="Usikkerhed om den rigtige garniture">Usikkerhed om den rigtige garniture</h3>
+      <p data-pl-en="Herbs on everything isn't a system — the right garnish depends on what's already rich, acidic, and colored on that specific plate." data-pl-da="Urter på alting er ikke et system — den rigtige garniture afhænger af, hvad der allerede er fyldigt, syrligt og farverigt på netop den tallerken.">Urter på alting er ikke et system — den rigtige garniture afhænger af, hvad der allerede er fyldigt, syrligt og farverigt på netop den tallerken.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title" data-pl-en="Two real plates, worked through" data-pl-da="To rigtige tallerkener, gennemgået">Two real plates, worked through</h2>
+  <div class="rule-steps" style="margin-bottom:44px;">
+    <div class="example-box">
+      <b data-pl-en="Seared steak, béarnaise." data-pl-da="Stegt steak med béarnaise.">Seared steak, béarnaise.</b> <span data-pl-en="The béarnaise already brings fat and acid, so more richness or more sharpness both miss the point. What's missing is color and freshness — shaved fennel instead of another pile of green beans, so the plate doesn't just taste balanced, it looks lifted." data-pl-da="Béarnaisen tilfører allerede fedme og syre, så mere fylde eller mere syre rammer ved siden af. Det, der mangler, er farve og friskhed — tyndtskåret fennikel i stedet for endnu en portion grønne bønner, så tallerkenen ikke bare smager af balance, men også ser friskere og lettere ud.">The béarnaise already brings fat and acid, so more richness or more sharpness both miss the point. What's missing is color and freshness — shaved fennel instead of another pile of green beans, so the plate doesn't just taste balanced, it looks lifted.</span>
+    </div>
+    <div class="example-box">
+      <b data-pl-en="Stjerneskud/Shootingstar." data-pl-da="Stjerneskud.">Stjerneskud/Shootingstar.</b> <span data-pl-en="Built on a rich pink dressing, toasted bread, fish and shrimp — everything on this plate reads red and heavy. It needs acid (lemon) it doesn't have yet, and a deliberate green element — asparagus, cucumber, pea shoots — or the whole thing looks like one color from across the room." data-pl-da="Bygget på en fyldig pink dressing, ristet brød, fisk og rejer — hele tallerkenen fremstår rød og tung. Den mangler syre (citron) og et bevidst grønt element — asparges, agurk eller ærteskud — ellers ser hele tallerkenen ud som én farve på afstand.">Built on a rich pink dressing, toasted bread, fish and shrimp — everything on this plate reads red and heavy. It needs acid (lemon) it doesn't have yet, and a deliberate green element — asparagus, cucumber, pea shoots — or the whole thing looks like one color from across the room.</span>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="tool-anchor" data-pl-en="Try it on your plate" data-pl-da="Prøv det på din tallerken">Prøv det på din tallerken</h2>
+</div>
+
+<div class="wrap">
+  <div class="grid">
+    <div class="panel">
+      <div class="field">
+        <label class="field-label" data-pl-en="Protein" data-pl-da="Protein">Protein</label>
+        <select id="protein"></select>
+      </div>
+      <div class="field">
+        <label class="field-label" data-pl-en="Cooking method" data-pl-da="Tilberedningsmetode">Tilberedningsmetode</label>
+        <select id="method"></select>
+      </div>
+      <div class="field">
+        <label class="field-label" data-pl-en="Sauce or dressing" data-pl-da="Sovs eller dressing">Sovs eller dressing</label>
+        <select id="sauce"></select>
+        <div class="custom-block" id="customSauceBlock">
+          <label class="field-label">Describe it</label>
+          <input type="text" id="customSauceName" placeholder="e.g. smoked paprika aioli">
+          <label class="field-label" style="margin-top:8px;">Richness (fat)</label>
+          <input type="range" id="customSauceFat" min="0" max="10" value="5">
+          <div class="slider-row"><span>Light</span><span>Rich</span></div>
+          <label class="field-label" style="margin-top:8px;">Acid</label>
+          <input type="range" id="customSauceAcid" min="0" max="10" value="3">
+          <div class="slider-row"><span>Flat</span><span>Sharp</span></div>
+          <label class="field-label" style="margin-top:8px;">Dominant color</label>
+          <select id="customSauceColor">
+            <option value="brown">Brown</option>
+            <option value="golden">Golden</option>
+            <option value="red">Red</option>
+            <option value="pink">Pink</option>
+            <option value="white">White / pale</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+            <option value="purple">Purple</option>
+            <option value="dark">Dark</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" data-pl-en="Sides already on the plate" data-pl-da="Tilbehør allerede på tallerkenen">Tilbehør allerede på tallerkenen</label>
+        <div class="check-list" id="sides"></div>
+        <div class="custom-side-row">
+          <input type="text" id="customSideName" placeholder="add another side...">
+          <select id="customSideColor" style="max-width:110px;">
+            <option value="beige">Beige</option>
+            <option value="golden">Golden</option>
+            <option value="white">White</option>
+            <option value="green">Green</option>
+            <option value="orange">Orange</option>
+            <option value="red">Red</option>
+            <option value="pink">Pink</option>
+            <option value="brown">Brown</option>
+            <option value="yellow">Yellow</option>
+            <option value="purple">Purple</option>
+            <option value="dark">Dark</option>
+          </select>
+          <button class="small-btn" onclick="addCustomSide()">Add</button>
+        </div>
+        <div class="custom-sides-list" id="customSidesList"></div>
+      </div>
+      <button class="go" onclick="plateIt()" data-pl-en="Plate it" data-pl-da="Anret">Anret</button>
+    </div>
+
+    <div class="result-area">
+      <div class="plate-box"><div class="plate" id="plateVisual"></div></div>
+      <div id="output">
+        <div class="empty-note" data-pl-en="Fill in the dish, then hit &quot;Plate it.&quot;" data-pl-da="Udfyld retten, og tryk derefter på &quot;Anret.&quot;">Udfyld retten, og tryk derefter på &quot;Anret.&quot;</div>
+      </div>
+      <div>
+        <button class="small-btn" id="copyBtn" onclick="copyResult()" style="display:none;" data-pl-en="Copy this plate as text" data-pl-da="Kopiér denne tallerken som tekst">Kopiér denne tallerken som tekst</button>
+        <div class="copy-note" id="copyNote" data-pl-en="Copied." data-pl-da="Kopieret.">Kopieret.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;" id="historySection" style="display:none;">
+    <h2 class="section-title" data-pl-en="Plates you've checked this session" data-pl-da="Tallerkener, du har tjekket i denne session">Tallerkener, du har tjekket i denne session</h2>
+    <div class="history" id="historyList"></div>
+  </div>
+</div>
+
+<script>
+const PROTEINS = {
+  steak:    {label:"Steak / red meat", richness:7, color:"brown", family:"meat"},
+  lamb:     {label:"Lamb", richness:7, color:"brown", family:"meat"},
+  duck:     {label:"Duck", richness:8, color:"brown", family:"meat"},
+  pork:     {label:"Pork", richness:6, color:"brown", family:"pork"},
+  porkbelly:{label:"Pork belly", richness:9, color:"brown", family:"pork"},
+  chicken:  {label:"Chicken", richness:3, color:"golden", family:"poultry"},
+  turkey:   {label:"Turkey", richness:3, color:"golden", family:"poultry"},
+  salmon:   {label:"Salmon", richness:6, color:"pink", family:"fish"},
+  whitefish:{label:"White fish", richness:3, color:"white", family:"fish"},
+  batteredfish:{label:"White fish in batter", richness:6, color:"golden", family:"fish"},
+  shellfish:{label:"Shellfish / shrimp", richness:3, color:"pink", family:"fish"},
+  tuna:     {label:"Tuna", richness:4, color:"red", family:"fish"},
+  egg:      {label:"Egg-based", richness:4, color:"golden", family:"veg"},
+  veg:      {label:"Vegetarian / tofu", richness:3, color:"green", family:"veg"},
+  mushroom: {label:"Mushroom (as main)", richness:4, color:"dark", family:"veg"},
+  cauliflower:{label:"Cauliflower (as main)", richness:2, color:"white", family:"veg"},
+  legume:   {label:"Beans / legumes", richness:3, color:"beige", family:"veg"},
+};
+const METHODS = {
+  fried:   {label:"Fried", mod:3},
+  seared:  {label:"Seared / pan-fried", mod:1},
+  grilled: {label:"Grilled", mod:1},
+  roasted: {label:"Roasted", mod:1},
+  braised: {label:"Braised / slow-cooked", mod:2},
+  steamed: {label:"Steamed", mod:0},
+  raw:     {label:"Raw / cured", mod:0},
+  poached: {label:"Poached", mod:0},
+};
+const SAUCES = {
+  none:      {label:"No sauce", fat:0, acid:0, color:null},
+  bearnaise: {label:"Béarnaise", fat:9, acid:6, color:"pale"},
+  hollandaise:{label:"Hollandaise", fat:9, acid:4, color:"pale"},
+  cream:     {label:"Cream sauce", fat:8, acid:1, color:"white"},
+  butter:    {label:"Brown butter", fat:9, acid:1, color:"golden"},
+  beurreblanc:{label:"Beurre blanc", fat:8, acid:5, color:"pale"},
+  gravy:     {label:"Brown gravy", fat:6, acid:1, color:"brown"},
+  tomato:    {label:"Tomato-based", fat:3, acid:6, color:"red"},
+  vinaigrette:{label:"Vinaigrette", fat:3, acid:8, color:"clear"},
+  soy:       {label:"Soy / teriyaki glaze", fat:3, acid:3, color:"brown"},
+  miso:      {label:"Miso glaze", fat:4, acid:2, color:"brown"},
+  pinkdressing:{label:"Rich pink/seafood dressing", fat:8, acid:2, color:"pink"},
+  chimichurri:{label:"Chimichurri", fat:4, acid:6, color:"green"},
+  pesto:     {label:"Pesto", fat:6, acid:2, color:"green"},
+  curry:     {label:"Curry sauce", fat:6, acid:2, color:"yellow"},
+  harissa:   {label:"Harissa / chili sauce", fat:3, acid:3, color:"red"},
+  gastrique: {label:"Fruit gastrique", fat:1, acid:7, color:"purple"},
+  custom:    {label:"Other — describe it...", fat:0, acid:0, color:null},
+};
+const SIDES = {
+  potato:  {label:"Potatoes / mash", richness:2, color:"beige"},
+  fries:   {label:"Fries", richness:3, color:"golden"},
+  rice:    {label:"Rice", richness:0, color:"white"},
+  bread:   {label:"Toasted bread", richness:1, color:"golden"},
+  greens:  {label:"Green beans / haricot verts", richness:0, color:"green"},
+  salad:   {label:"Salad leaves", richness:0, color:"green"},
+  roots:   {label:"Roasted root veg", richness:1, color:"orange"},
+  shrimp:  {label:"Extra shrimp / shellfish garnish", richness:1, color:"pink"},
+  egg:     {label:"Egg", richness:2, color:"golden"},
+  cheese:  {label:"Cheese", richness:3, color:"golden"},
+  polenta: {label:"Polenta", richness:1, color:"yellow"},
+  couscous:{label:"Couscous", richness:0, color:"beige"},
+  quinoa:  {label:"Quinoa", richness:0, color:"beige"},
+  corn:    {label:"Grilled corn", richness:0, color:"yellow"},
+  redcabbage:{label:"Red cabbage slaw", richness:0, color:"purple"},
+  pickles: {label:"Pickles", richness:0, color:"green"},
+};
+let customSides = [];
+
+function fill(id, obj){
+  const el = document.getElementById(id);
+  el.innerHTML = Object.entries(obj).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('');
+}
+fill('protein', PROTEINS);
+fill('method', METHODS);
+fill('sauce', SAUCES);
+
+const sidesBox = document.getElementById('sides');
+sidesBox.innerHTML = Object.entries(SIDES).map(([k,v])=>
+  `<label class="check-item"><input type="checkbox" value="${k}"> ${v.label}</label>`
+).join('');
+window.plRefreshSideLabels = function(){
+  if(typeof window.plSetLanguage==='function'){
+    const lang=localStorage.getItem('plateLogicLang')||'en';
+    window.plSetLanguage(lang);
+  }
+};
+
+document.getElementById('sauce').addEventListener('change', (e)=>{
+  document.getElementById('customSauceBlock').classList.toggle('show', e.target.value === 'custom');
+});
+
+function addCustomSide(){
+  const nameInput = document.getElementById('customSideName');
+  const colorSelect = document.getElementById('customSideColor');
+  const name = nameInput.value.trim();
+  if(!name) return;
+  customSides.push({label:name, richness:1, color:colorSelect.value});
+  nameInput.value = '';
+  renderCustomSides();
+}
+function removeCustomSide(i){
+  customSides.splice(i,1);
+  renderCustomSides();
+}
+function renderCustomSides(){
+  const el = document.getElementById('customSidesList');
+  el.innerHTML = customSides.map((s,i)=>
+    `<span class="custom-side-chip">${s.label}<button onclick="removeCustomSide(${i})">×</button></span>`
+  ).join('');
+}
+
+const ACID_POOLS = {
+  meat:    ["pickled shallots or red onion","a sherry vinegar drizzle","cornichons or mustard seed","a spoon of salsa verde"],
+  pork:    ["a quick apple or cider slaw","pickled mustard seeds","a cider vinegar gastrique"],
+  poultry: ["pickled fennel or radish","a squeeze of lemon-caper butter","a cider gastrique"],
+  fish:    ["a lemon or grapefruit wedge","pickled cucumber","caper berries","a dill-yogurt spoon"],
+  veg:     ["a citrus vinaigrette drizzle","pickled onions","a hit of sumac or lemon zest"],
+};
+const COLOR_POOLS = {
+  green: ["pea shoots or micro herbs","blanched asparagus tips or watercress","a herb oil drizzle"],
+  white: ["shaved fennel","crème fraîche or yogurt dot","thin radish slices"],
+  red_pop: ["pomegranate seeds","pickled red onion","thin chili or paprika oil"],
+  purple_pop: ["pickled red cabbage","a few blackberries or blueberries","shaved purple radish or shiso"],
+  yellow_pop: ["a curl of lemon or grapefruit zest","charred corn or a mango slaw","a saffron or turmeric oil drizzle"],
+  bright_pop: ["citrus segments","a bright herb oil","charred corn or squash purée"],
+};
+const COLOR_HEX = {
+  brown:"#7a4a2b", golden:"#d3a13c", red:"#a3352c", pink:"#d98f8a",
+  white:"#f0ece3", beige:"#d9c9a3", orange:"#c97b3b", green:"#5f7a4a",
+  pale:"#e8dfc2", clear:"#dcd8c8", yellow:"#d9b23c", purple:"#6b4a73", dark:"#2b2620"
+};
+
+let sessionHistory = [];
+let lastResultText = "";
+
+function dominantColorGroup(colors){
+  const groups = {brown:0, golden:0, red:0, pink:0, white:0, green:0, beige:0, orange:0, pale:0, clear:0, yellow:0, purple:0, dark:0};
+  colors.forEach(c=>{ if(groups[c]!==undefined) groups[c]++; });
+  let max = -1, dom = "brown";
+  for(const [k,v] of Object.entries(groups)){ if(v>max){max=v; dom=k;} }
+  return {dom, greenCount: groups.green};
+}
+
+function getSauce(){
+  const key = document.getElementById('sauce').value;
+  if(key === 'custom'){
+    const name = document.getElementById('customSauceName').value.trim() || "your sauce";
+    return {
+      label: name,
+      fat: parseInt(document.getElementById('customSauceFat').value,10),
+      acid: parseInt(document.getElementById('customSauceAcid').value,10),
+      color: document.getElementById('customSauceColor').value,
+    };
+  }
+  return SAUCES[key];
+}
+
+function plateIt(){
+  if (typeof window.plCanUse === "function" && !window.plCanUse()) return;
+  const proteinKey = document.getElementById('protein').value;
+  const methodKey = document.getElementById('method').value;
+  const protein = PROTEINS[proteinKey];
+  const method = METHODS[methodKey];
+  const sauce = getSauce();
+  const checkedKeys = Array.from(sidesBox.querySelectorAll('input:checked')).map(i=>i.value);
+  const sides = [...checkedKeys.map(k=>SIDES[k]), ...customSides];
+
+  let richness = protein.richness + method.mod + sauce.fat + sides.reduce((s,x)=>s+x.richness,0);
+  let acid = sauce.acid;
+
+  const colors = [protein.color, sauce.color, ...sides.map(s=>s.color)].filter(Boolean);
+  const {dom, greenCount} = dominantColorGroup(colors);
+
+  const isDa=localStorage.getItem('plateLogicLang')==='da';
+  const labelDa=(s)=>{
+    const map={
+      "Brown gravy":"Brun sovs",
+      "Gravy / jus":"Brun sovs",
+      "Fried":"Stegt",
+      "Pork belly":"Flæskesteg",
+      "Potatoes / mash":"Kartofler / mos"
+    };
+    return map[s]||s;
+  };
+  const heavyParts = [];
+  if(sauce.fat >= 6) heavyParts.push(isDa?labelDa(sauce.label.toLowerCase()==='brown gravy'?'Brown gravy':sauce.label.toLowerCase()):`the ${sauce.label.toLowerCase()}`);
+  if(method.mod >= 2) heavyParts.push(isDa?labelDa(method.label):`the ${method.label.toLowerCase()} cooking method`);
+  if(protein.richness >= 6) heavyParts.push(isDa?labelDa(protein.label):`the ${protein.label.toLowerCase()} itself`);
+  sides.forEach(s=>{ if(s.richness>=2) heavyParts.push(isDa?labelDa(s.label):s.label.toLowerCase()); });
+  const heavyText = heavyParts.length
+    ? `The weight on this plate is coming from ${heavyParts.join(", ")}. That's a rich plate — richness score ${richness}, acid score ${acid}.`
+    : `This plate is fairly light across the board — richness score ${richness}, acid score ${acid}. There isn't much to balance out.`;
+
+  const needsAcid = richness > 8 && acid < richness * 0.5;
+  const acidPool = ACID_POOLS[protein.family] || ACID_POOLS.veg;
+  const acidPicks = acidPool.slice(0,3);
+  const balanceText = needsAcid
+    ? `Acid is behind here relative to how rich this plate is. Something sharp will cut through it rather than add more weight.`
+    : `Acid is already doing enough work — you don't need to fight the richness any further, just keep it in mind if you add anything else.`;
+
+  let colorPool, colorNote;
+  if(dom === "green" && greenCount >= 2){
+    colorPool = COLOR_POOLS.red_pop;
+    colorNote = `This plate is already reading green. Add a small pop of red or white instead of piling on more green.`;
+  } else if(["white","pink","pale","beige","clear"].includes(dom)){
+    colorPool = COLOR_POOLS.green;
+    colorNote = `This plate reads pale overall. A touch of fresh green will be the difference between "cooked well" and "plated well."`;
+  } else if(dom === "yellow"){
+    colorPool = COLOR_POOLS.purple_pop;
+    colorNote = `This plate is reading yellow overall. A small pop of purple or deep red will stop it looking one-note.`;
+  } else if(dom === "purple"){
+    colorPool = COLOR_POOLS.yellow_pop;
+    colorNote = `This plate is dominated by purple tones. A touch of yellow or citrus will lift it and give the eye something to land on.`;
+  } else if(dom === "dark"){
+    colorPool = COLOR_POOLS.bright_pop;
+    colorNote = `This plate reads dark overall. A bright, light element will keep it from looking heavy and closed-off.`;
+  } else {
+    colorPool = COLOR_POOLS.green;
+    colorNote = `This plate is dominated by brown, golden or red tones. A fresh green element will lift it and stop it looking flat and one-note.`;
+  }
+  const colorPicks = colorPool.slice(0,3);
+
+  const out = document.getElementById('output');
+  out.innerHTML = `
+    <div class="section heavy">
+      <h2>Heavy</h2>
+      <p>${heavyText}</p>
+    </div>
+    <div class="section balance">
+      <h2>Balance</h2>
+      <p>${balanceText}</p>
+      <div class="chips">${acidPicks.map(a=>`<div class="chip">${a}</div>`).join('')}</div>
+    </div>
+    <div class="section contrast">
+      <h2>Contrast</h2>
+      <p>${colorNote}</p>
+      <div class="chips">${colorPicks.map(c=>`<div class="chip">${c}</div>`).join('')}</div>
+    </div>
+  `;
+
+  if(typeof window.plSetLanguage==='function') window.plSetLanguage(localStorage.getItem('plateLogicLang')||'en');
+
+  renderPlate(protein, sauce, sides);
+
+  const dishName = `${protein.label} + ${sauce.label}`;
+  lastResultText = `${dishName}\nHeavy: ${heavyText}\nBalance: ${balanceText} (${acidPicks.join(", ")})\nContrast: ${colorNote} (${colorPicks.join(", ")})`;
+  document.getElementById('copyBtn').style.display = 'inline-block';
+
+  sessionHistory.unshift({name: dishName, text: lastResultText});
+  renderHistory();
+}
+
+function renderHistory(){
+  const section = document.getElementById('historySection');
+  const list = document.getElementById('historyList');
+  if(sessionHistory.length === 0){ section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  list.innerHTML = sessionHistory.map((h,i)=>`
+    <div class="history-item">
+      <div class="desc"><b>${h.name}</b></div>
+      <div class="history-actions">
+        <button class="small-btn" onclick="copyText(${i})">Copy</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function copyText(i){
+  navigator.clipboard.writeText(sessionHistory[i].text);
+}
+
+function copyResult(){
+  navigator.clipboard.writeText(lastResultText).then(()=>{
+    const note = document.getElementById('copyNote');
+    note.classList.add('show');
+    setTimeout(()=>note.classList.remove('show'), 1800);
+  });
+}
+
+function renderPlate(protein, sauce, sides){
+  const plate = document.getElementById('plateVisual');
+  plate.innerHTML = '';
+  const items = [
+    {size:90, color:COLOR_HEX[protein.color]||"#999", x:50, y:50},
+  ];
+  if(sauce.color) items.push({size:100, color:COLOR_HEX[sauce.color]||"#ccc", x:50, y:55, opacity:0.35});
+  sides.forEach((s,i)=>{
+    const angle = (i / Math.max(sides.length,1)) * 2 * Math.PI;
+    items.push({
+      size:30,
+      color:COLOR_HEX[s.color]||"#999",
+      x: 50 + 32*Math.cos(angle),
+      y: 50 + 32*Math.sin(angle),
+    });
+  });
+  items.forEach(it=>{
+    const d = document.createElement('div');
+    d.className = 'dot';
+    d.style.width = it.size+'px';
+    d.style.height = it.size+'px';
+    d.style.background = it.color;
+    d.style.left = `calc(${it.x}% - ${it.size/2}px)`;
+    d.style.top = `calc(${it.y}% - ${it.size/2}px)`;
+    d.style.opacity = it.opacity || 0.9;
+    plate.appendChild(d);
+  });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+}
+</script>
+<script>
+(function(){
+  const L=5, pk='plateLogicPlan', uk='plateLogicFreeUses';
+  const STRIPE={Pro:'https://buy.stripe.com/eVqbJ26U31Fb7Wr51idEs00',Annual:'https://buy.stripe.com/aFa00ka6fcjP0tZeBSdEs02'};
+  const SUPABASE_URL='https://gpiavzcsyrnrvtfxaetp.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY='sb_publishable_AQLE5oe-fUWOIPwmISPE6A_JY9jNV9d';
+  let sb=null;
+  let currentUser=null;
+  let currentEntitlement=null;
+
+  function p(){return localStorage.getItem(pk)||'free'}
+  function u(){return Number(localStorage.getItem(uk)||0)}
+  function setStatus(msg){
+    const el=document.getElementById('pl-auth-status');
+    if(!el)return;
+    const da=localStorage.getItem('plateLogicLang')==='da';
+    const map={
+      'Sender kode...':'Sending code...',
+      '8-cifret kode sendt. Tjek din e-mail.':'8-digit code sent. Check your email.',
+      'Login er ikke konfigureret endnu.':'Login is not configured yet.',
+      'Indtast en gyldig e-mailadresse.':'Enter a valid email address.',
+      'Der opstod en fejl. Prøv igen.':'An error occurred. Please try again.',
+      'Indtast din e-mailadresse.':'Enter your email address.',
+      'Indtast den 8-cifrede kode.':'Enter the 8-digit code.',
+      'Logger ind...':'Logging in...',
+      'Koden er forkert eller udløbet. Prøv igen.':'The code is incorrect or expired. Please try again.',
+      'Du er logget ind.':'You are logged in.',
+      'Kunne ikke hente din Pro-status. Prøver igen…':'Could not load your Pro status. Trying again…',
+      'Åbner abonnement...':'Opening subscription...',
+      'Kunne ikke åbne abonnementssiden.':'Could not open the subscription page.',
+      'Log ind først.':'Log in first.',
+      'Log ind først. Så kan betalingen kobles til din konto.':'Log in first so the payment can be linked to your account.'
+    };
+    const reverse={
+      'Sending code...':'Sender kode...',
+      '8-digit code sent. Check your email.':'8-cifret kode sendt. Tjek din e-mail.',
+      'Login is not configured yet.':'Login er ikke konfigureret endnu.',
+      'Enter a valid email address.':'Indtast en gyldig e-mailadresse.',
+      'An error occurred. Please try again.':'Der opstod en fejl. Prøv igen.',
+      'Enter your email address.':'Indtast din e-mailadresse.',
+      'Enter the 8-digit code.':'Indtast den 8-cifrede kode.',
+      'Logging in...':'Logger ind...',
+      'The code is incorrect or expired. Please try again.':'Koden er forkert eller udløbet. Prøv igen.',
+      'You are logged in.':'Du er logget ind.',
+      'Could not load your Pro status. Trying again…':'Kunne ikke hente din Pro-status. Prøver igen…',
+      'Opening subscription...':'Åbner abonnement...',
+      'Could not open the subscription page.':'Kunne ikke åbne abonnementssiden.',
+      'Log in first.':'Log ind først.',
+      'Log in first so the payment can be linked to your account.':'Log ind først. Så kan betalingen kobles til din konto.'
+    };
+    el.textContent=da?(reverse[msg]||msg):(map[msg]||msg);
+  }
+
+  window.plOpenAuth=function(){
+    const m=document.getElementById('pl-auth-modal');
+    if(m)m.style.display='flex';
+    const i=document.getElementById('pl-auth-email-input');
+    if(i){i.value=currentUser?.email||'';setTimeout(()=>i.focus(),50)}
+  };
+  window.plCloseAuth=function(){
+    const m=document.getElementById('pl-auth-modal');
+    if(m)m.style.display='none';
+    setStatus('');
+  };
+
+  window.plSendLoginLink=async function(){
+  if(!sb){setStatus('Login er ikke konfigureret endnu.');return}
+
+  const input=document.getElementById('pl-auth-email-input');
+  const email=(input?.value||'').trim().toLowerCase();
+
+  if(!email||!email.includes('@')){
+    setStatus('Indtast en gyldig e-mailadresse.');
+    return;
+  }
+
+  setStatus('Sender kode...');
+
+  const {error}=await sb.auth.signInWithOtp({
+    email
+  });
+
+  if(error){
+    console.error(error);
+    setStatus('Der opstod en fejl. Prøv igen.');
+    return;
+  }
+
+  const otpBox=document.getElementById('pl-auth-otp');
+  if(otpBox) otpBox.style.display='block';
+
+  const otpInput=document.getElementById('pl-auth-otp-input');
+  if(otpInput){
+    otpInput.value='';
+    otpInput.focus();
+  }
+
+  setStatus('8-cifret kode sendt. Tjek din e-mail.');
+};
+
+window.plVerifyOtp=async function(){
+  if(!sb){setStatus('Login er ikke konfigureret endnu.');return}
+
+  const email=(document.getElementById('pl-auth-email-input')?.value||'').trim().toLowerCase();
+  const token=(document.getElementById('pl-auth-otp-input')?.value||'').trim();
+
+  if(!email||!email.includes('@')){
+    setStatus('Indtast din e-mailadresse.');
+    return;
+  }
+
+  if(!/^\d{8}$/.test(token)){
+    setStatus('Indtast den 8-cifrede kode.');
+    return;
+  }
+
+  setStatus('Logger ind...');
+
+  const {data,error}=await sb.auth.verifyOtp({
+    email,
+    token,
+    type:'email'
+  });
+
+  if(error){
+    console.error(error);
+    setStatus('Koden er forkert eller udløbet. Prøv igen.');
+    return;
+  }
+
+  currentUser=data?.user||null;
+document.getElementById('pl-auth-otp-input').value='';
+
+await loadEntitlement();
+plRefreshPlan();
+renderAuth();
+
+setStatus('Du er logget ind.');
+
+setTimeout(()=>{
+  plCloseAuth();
+},300);
+};
+ window.plSignOut=async function(){
+    if(sb)await sb.auth.signOut();
+    currentUser=null;
+    currentEntitlement=null;
+    plRefreshPlan();
+    renderAuth();
+};
+
+  async function loadEntitlement(){
+    currentEntitlement=null;
+    if(!sb||!currentUser)return;
+
+    // Always read the entitlement from Supabase for the currently authenticated user.
+    // The localStorage value is only a fallback for the free-user counter and is
+    // never used to grant Pro when Supabase cannot be read.
+    const userId=currentUser.id;
+    const {data,error}=await sb
+      .from('user_entitlements')
+      .select('plan,subscription_status')
+      .eq('user_id',userId)
+      .limit(1)
+      .maybeSingle();
+
+    if(error){
+      console.error('Plate Logic: could not load user_entitlements:',error);
+      setStatus('Kunne ikke hente din Pro-status. Prøver igen…');
+      setTimeout(()=>loadEntitlement(),1500);
+      return;
+    }
+
+    currentEntitlement=data||null;
+console.log('ENTITLEMENT:', data);
+    plRefreshPlan();
+
+if(data?.plan==='pro' || data?.plan==='lifetime'){
+      localStorage.setItem(pk,data.plan);
+    }
+
+    plRefreshPlan();
+    setStatus('');
+  }
+
+  function renderAuth(){
+    const btn=document.getElementById('pl-auth-button');
+    const email=document.getElementById('pl-auth-email');
+    if(!btn)return;
+    if(currentUser){
+      btn.textContent=localStorage.getItem('plateLogicLang')==='en'?'Log out':'Log ud';
+      btn.onclick=plSignOut;
+      if(email)email.textContent=currentUser.email||'';
+    }else{
+      btn.textContent=localStorage.getItem('plateLogicLang')==='en'?'Log in with email':'Log ind med e-mail';
+      btn.onclick=plOpenAuth;
+      if(email)email.textContent='';
+    }
+  }
+
+  window.plOpenPay=function(x){
+  if(!currentUser){
+    plOpenAuth();
+    setStatus('Log ind først. Så kan betalingen kobles til din konto.');
+    return;
+  }
+
+  window.plSelectedPlan=x;
+  document.getElementById('pl-pay-title').textContent='Plate Logic Pro';
+  document.getElementById('pl-pay-price').textContent=x==='Annual'?'299 kr./år':'39 kr./md.';
+  document.getElementById('pl-pay-btn').textContent='Fortsæt til betaling';
+  document.getElementById('pl-pay-modal').style.display='flex';
+};
+
+window.plOpenPortal=async function(){
+  if(!currentUser){
+    plOpenAuth();
+    setStatus('Log ind først.');
+    return;
+  }
+
+  setStatus('Åbner abonnement...');
+
+  const {data,error}=await sb.functions.invoke('create-portal-session',{body:{}});
+
+  if(error||!data?.url){
+    console.error(error||data);
+    setStatus('Kunne ikke åbne abonnementssiden.');
+    return;
+  }
+
+  window.location.href=data.url;
+};
+  window.plClosePay=function(){document.getElementById('pl-pay-modal').style.display='none'};
+  window.plGoToStripe=function(){
+    const base=STRIPE[window.plSelectedPlan||'Pro'];
+    const email=currentUser?.email;
+    const url=base;
+    window.location.href=url;
+  };
+  window.plRefreshPlan=function(){
+    const b=document.getElementById('pl-plan-badge'),x=document.getElementById('pl-usage');
+    const plan=(currentUser ? (currentEntitlement?.plan||'free') : 'free');
+    const actions=document.getElementById('pl-plan-actions'); if(actions) actions.style.display=plan==='lifetime'?'none':'';
+    const annualAction=document.getElementById('pl-annual-action');
+    const isDa=localStorage.getItem('plateLogicLang')!=='en';
+    if(annualAction){
+      annualAction.style.display=plan==='free'?'':'none';
+      annualAction.textContent=isDa?'Pro · 299 kr./år':'Pro · 299 kr./yr';
+      annualAction.onclick=function(){plOpenPay('Annual');};
+    }
+    const proAction=document.getElementById('pl-pro-action');
+if(proAction){
+  if(plan==='pro'){
+    proAction.textContent=isDa?'Annuller abonnement':'Cancel subscription';
+    proAction.onclick=plOpenPortal;
+  }else{
+    proAction.textContent=isDa?'Pro · 39 kr./md.':'Pro · 39 kr./mo.';
+    proAction.onclick=function(){plOpenPay('Pro');};
+  }
+}
+    if(plan!=='free'){
+      b.textContent=plan==='lifetime'?'LIFETIME':'PRO';
+      x.textContent=plan==='lifetime'
+        ?(isDa?'Lifetime-adgang er slået til.':'Lifetime access is enabled.')
+        :(isDa?'Ubegrænset brug er slået til.':'Unlimited use is enabled.');
+    }else{
+      b.textContent='FREE';
+      x.textContent=isDa
+        ?'Gratis: '+Math.max(0,L-u())+' analyser tilbage på denne enhed.'
+        :'Free: '+Math.max(0,L-u())+' analyses left on this device.';
+    }
+  };
+  window.plCanUse=function(){
+    const plan=(currentUser ? (currentEntitlement?.plan||'free') : 'free');
+    if(plan!=='free')return true;
+    let n=u();
+    if(n>=L){plOpenPay('Pro');return false}
+    localStorage.setItem(uk,String(n+1));plRefreshPlan();return true;
+  };
+
+  async function initAuth(){
+    if(!window.supabase||!window.supabase.createClient){
+      renderAuth();
+      return;
+    }
+    sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+    if(SUPABASE_PUBLISHABLE_KEY==='YOUR_SUPABASE_PUBLISHABLE_KEY'){
+      console.warn('Plate Logic: replace YOUR_SUPABASE_PUBLISHABLE_KEY with your Supabase publishable key.');
+      renderAuth();
+      return;
+    }
+    const {data:sessionData}=await sb.auth.getSession();
+    currentUser=sessionData?.session?.user||null;
+    renderAuth();
+
+    // Refresh/validate the authenticated user before reading entitlements.
+    // This avoids relying only on a cached session when the page is opened
+    // from GitHub Pages or after a magic-link login.
+    if(currentUser){
+      const {data:userData,error:userError}=await sb.auth.getUser();
+      if(!userError && userData?.user){
+        currentUser=userData.user;
+        renderAuth();
+      }
+    }
+
+    await loadEntitlement();
+
+    sb.auth.onAuthStateChange((_event,session)=>{
+      currentUser=session?.user||null;
+      renderAuth();
+      if(currentUser)plCloseAuth();
+      setTimeout(()=>loadEntitlement(),0);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    plRefreshPlan();
+    initAuth();
+  });
+})();
+</script>
+<style id="pl-i18n-style">
+#pl-language{position:absolute;top:12px;right:12px;display:flex;gap:4px}
+#pl-language a{background:#182019;border:1px solid #37443c;color:#efeee7;border-radius:2px;padding:7px 8px;font:500 12px 'IBM Plex Sans',sans-serif;cursor:pointer;text-decoration:none}
+#pl-language a:hover{border-color:#c99a44}
+#pl-language a.active{border-color:#c99a44;color:#c99a44}
+#pl-planbar{position:relative;padding-right:105px}
+@media(max-width:520px){#pl-language{top:10px;right:10px;font-size:11px;padding:6px 7px}.pl-planbar{padding-right:95px!important}}
+</style>
+<script id="pl-i18n">
+(function(){
+  const DICT = {
+    "FREE":"GRATIS","Plate Logic":"Plate Logic","Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.":"Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.",
+    "Pro · 39 kr./md.":"Pro · 39 kr./md.","Pro · 299 kr./år":"Pro · 299 kr./år","Log ind med e-mail":"Log ind med e-mail","Log ud":"Log ud",
+    "Plate Logic Pro":"Plate Logic Pro","Du sendes videre til Stripe for sikker betaling.":"Du sendes videre til Stripe for sikker betaling.",
+    "Fortsæt til betaling":"Fortsæt til betaling","Luk":"Luk","Log ind på Plate Logic":"Log ind på Plate Logic",
+    "Indtast din e-mail. Du får en 8-cifret kode på mail.":"Indtast din e-mail. Du får en 8-cifret kode på mail.",
+    "Send kode":"Send kode","Log ind":"Log ind","8-cifret kode":"8-cifret kode",
+    "Try it — jump to the tool":"Prøv det — gå til værktøjet",
+    "A finishing check for anyone who cooks well but wants their plate to look like it too. It runs on one rule, taken from years of plating dishes to order: figure out what's heavy, add something to balance it, then check the color reads right.":"Et sidste tjek for dig, der godt kan lave mad, men gerne vil have tallerkenen til at se lige så god ud. Det bygger på én enkel regel: find det tunge, tilføj noget der skaber balance, og tjek til sidst farverne.",
+    "1. Heavy":"1. Fylde","Heavy":"Fylde","Name what's doing the rich, fatty, or dense work on the plate — the sauce, the cooking method, the protein itself.":"Find det, der giver fylde, fedme eller tyngde på tallerkenen — saucen, tilberedningsmetoden eller selve proteinet.",
+    "2. Balance":"2. Balance","If the richness isn't matched by acid, something sharp needs to cut through it — not more richness.":"Hvis fylden ikke modsvares af syre, skal noget syrligt skære igennem — ikke mere fylde.",
+    "3. Contrast":"3. Kontrast","Contrast":"Kontrast","Check the color last. If the plate reads as one dominant color, add a garnish that visually pops against it.":"Tjek farven til sidst. Hvis tallerkenen domineres af én farve, så tilføj noget, der giver en tydelig visuel kontrast.",
+    "In practice:":"I praksis:",
+    "a seared steak with béarnaise is already rich and already acidic — the béarnaise brings its own fat and tang — so the fix is a fresh, light color: shaved fennel over more green beans. A dish like Stjerneskud/Shootingstar, built on a rich pink dressing, needs both acid (lemon) and a deliberate green element — asparagus, cucumber, pea shoots — because the whole plate reads red otherwise.":"En stegt steak med béarnaise er allerede fyldig og syrlig — béarnaisen tilfører selv fedme og syre — så løsningen er en frisk, lys farve: tyndtskåret fennikel i stedet for flere grønne bønner. En ret som Stjerneskud, med en fyldig pink dressing, har brug for både syre (citron) og et bevidst grønt element — asparges, agurk eller ærteskud — fordi hele tallerkenen ellers fremstår rød.","Why plates fall flat":"Hvorfor tallerkener kan virke flade",
+    "It tastes right, looks flat":"Det smager rigtigt, men ser fladt ud",
+    "The dish is cooked well but reads as one dull color and one texture — nothing tells the eye \"this was considered.\"":"Maden er tilberedt godt, men har én kedelig farve og én tekstur — intet fortæller øjet, at der er tænkt over tallerkenen.",
+    "Guessing at acid":"At gætte på syre",
+    "Hard to tell if a dish already has enough sharpness from the sauce, or if it actually needs something added to cut through it.":"Det kan være svært at vide, om saucen allerede giver nok syre, eller om der faktisk mangler noget, der kan skære igennem.",
+    "No feel for the right garnish":"Ingen fornemmelse for den rigtige garnish",
+    "Herbs on everything isn't a system — the right garnish depends on what's already rich, acidic, and colored on that specific plate.":"Urter på alt er ikke et system — den rigtige garnish afhænger af, hvad der allerede er fyldigt, syrligt og farverigt på netop den tallerken.",
+    "Two real plates, worked through":"To rigtige tallerkener, gennemgået",
+    "Seared steak, béarnaise.":"Stegt steak med béarnaise.",
+    "The béarnaise already brings fat and acid, so more richness or more sharpness both miss the point. What's missing is color and freshness — shaved fennel instead of another pile of green beans, so the plate doesn't just taste balanced, it looks lifted.":"Béarnaisen tilfører allerede fedme og syre, så mere fylde eller mere syre rammer ved siden af. Det, der mangler, er farve og friskhed — tyndtskåret fennikel i stedet for endnu en portion grønne bønner, så tallerkenen ikke bare smager af balance, men også ser friskere og lettere ud.",
+    "Stjerneskud/Shootingstar.":"Stjerneskud.",
+    "Built on a rich pink dressing, toasted bread, fish and shrimp — everything on this plate reads red and heavy. It needs acid (lemon) it doesn't have yet, and a deliberate green element — asparagus, cucumber, pea shoots — or the whole thing looks like one color from across the room.":"Bygget på en fyldig pink dressing, ristet brød, fisk og rejer — hele tallerkenen fremstår rød og tung. Den mangler syre (citron) og et bevidst grønt element — asparges, agurk eller ærteskud — ellers ser hele tallerkenen ud som én farve på afstand.",
+    "Seared steak, béarnaise.":"Stegt steak med béarnaise.","Stjerneskud/Shootingstar.":"Stjerneskud.",
+    "Try it on your plate":"Prøv det på din tallerken","Protein":"Protein","Cooking method":"Tilberedningsmetode","Sauce or dressing":"Sauce eller dressing",
+    "Describe it":"Beskriv den","Richness (fat)":"Fylde (fedt)","Light":"Let","Rich":"Fyldig","Acid":"Syre","Flat":"Flad","Sharp":"Syrlig",
+    "Dominant color":"Dominerende farve","Brown":"Brun","Golden":"Gylden","Red":"Rød","Pink":"Pink","White / pale":"Hvid / lys","Green":"Grøn","Yellow":"Gul","Purple":"Lilla","Dark":"Mørk",
+    "Sides already on the plate":"Tilbehør allerede på tallerkenen","Beige":"Beige","Orange":"Orange","Add":"Tilføj","add another side...":"tilføj andet tilbehør...",
+    "Plate it":"Anret","Fill in the dish, then hit \"Plate it.\"":"Udfyld retten og tryk derefter på \"Anret\".",
+    "Copy this plate as text":"Kopiér denne tallerken som tekst","Copied.":"Kopieret.","Plates you've checked this session":"Tallerkener, du har tjekket i denne session","Copy":"Kopiér",
+    "Steak / red meat":"Steak / rødt kød","Lamb":"Lam","Duck":"And","Pork":"Svinekød","Pork belly":"Flæskesteg", "Brown gravy":"Brun sovs","Chicken":"Kylling","Turkey":"Kalkun","Salmon":"Laks","White fish":"Hvid fisk","White fish in batter":"Paneret hvid fisk","Shellfish / shrimp":"Skaldyr / rejer","Tuna":"Tun","Egg-based":"Æggebaseret","Vegetarian / tofu":"Vegetarisk / tofu","Mushroom (as main)":"Svampe som hovedingrediens","Cauliflower (as main)":"Blomkål som hovedingrediens","Beans / legumes":"Bønner / bælgfrugter",
+    "Fried":"Stegt","Seared / pan-fried":"Stegt på pande","Grilled":"Grillet","Roasted":"Ovnbagt","Braised / slow-cooked":"Braiseret / langtidskogt","Steamed":"Dampet","Raw / cured":"Rå / saltet","Poached":"Pocheret",
+    "No sauce":"Ingen sauce","Béarnaise":"Béarnaise","Hollandaise":"Hollandaise","Cream sauce":"Flødesauce","Brown butter":"Brunet smør","Beurre blanc":"Beurre blanc","Gravy / jus":"Sky / jus","Tomato-based":"Tomatbaseret","Vinaigrette":"Vinaigrette","Soy / teriyaki glaze":"Soja / teriyaki-glaze","Miso glaze":"Miso-glaze","Rich pink/seafood dressing":"Fyldig pink/seafood-dressing","Chimichurri":"Chimichurri","Pesto":"Pesto","Curry sauce":"Karrysauce","Harissa / chili sauce":"Harissa / chilisauce","Fruit gastrique":"Frugtgastrique","Other — describe it...":"Andet — beskriv den...",
+    "Potatoes / mash":"Kartofler / mos","Fries":"Pommes frites","Rice":"Ris","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Pickles":"Syltet agurk",
+    "Login er ikke konfigureret endnu.":"Login er ikke konfigureret endnu.","Indtast en gyldig e-mailadresse.":"Indtast en gyldig e-mailadresse.","Sender kode...":"Sender kode...","Der opstod en fejl. Prøv igen.":"Der opstod en fejl. Prøv igen.",
+    "8-cifret kode sendt. Tjek din e-mail.":"8-cifret kode sendt. Tjek din e-mail.","Indtast din e-mailadresse.":"Indtast din e-mailadresse.","Indtast den 8-cifrede kode.":"Indtast den 8-cifrede kode.",
+    "Logger ind...":"Logger ind...","Koden er forkert eller udløbet. Prøv igen.":"Koden er forkert eller udløbet. Prøv igen.","Du er logget ind.":"Du er logget ind.",
+    "Kunne ikke hente din Pro-status. Prøver igen…":"Kunne ikke hente din Pro-status. Prøver igen…","Åbner abonnement...":"Åbner abonnement...",
+    "Kunne ikke åbne abonnementssiden.":"Kunne ikke åbne abonnementssiden.","Log ind først.":"Log ind først.",
+    "Log ind først. Så kan betalingen kobles til din konto.":"Log ind først. Så kan betalingen kobles til din konto.",
+    "Annuller abonnement":"Annuller abonnement","Ubegrænset brug er slået til.":"Ubegrænset brug er slået til.","Lifetime-adgang er slået til.":"Lifetime-adgang er slået til.",
+    "Gratis: ":"Gratis: "," analyser tilbage på denne enhed.":" analyser tilbage på denne enhed.",
+    "pickled shallots or red onion":"syltede skalotteløg eller rødløg","a sherry vinegar drizzle":"et stænk sherryeddike","cornichons or mustard seed":"cornichoner eller sennepsfrø","a spoon of salsa verde":"en skefuld salsa verde",
+    "a quick apple or cider slaw":"en hurtig æble- eller ciderslaw","pickled mustard seeds":"syltede sennepsfrø","a cider vinegar gastrique":"en gastrique med cidereddike",
+    "pickled fennel or radish":"syltet fennikel eller radise","a squeeze of lemon-caper butter":"lidt citron-kapersmør","a cider gastrique":"en cidergastrique",
+    "a lemon or grapefruit wedge":"en skive citron eller grapefrugt","pickled cucumber":"syltet agurk","caper berries":"kapersbær","a dill-yogurt spoon":"en skefuld dildyoghurt",
+    "a citrus vinaigrette drizzle":"et stænk citrusvinaigrette","pickled onions":"syltede løg","a hit of sumac or lemon zest":"lidt sumak eller citronskal",
+    "pea shoots or micro herbs":"ærteskud eller mikrourter","blanched asparagus tips or watercress":"blancherede aspargesspidser eller brøndkarse","a herb oil drizzle":"et stænk urteolie",
+    "shaved fennel":"tyndtskåret fennikel","crème fraîche or yogurt dot":"en lille klat crème fraîche eller yoghurt","thin radish slices":"tynde radiseskiver",
+    "pomegranate seeds":"granatæblekerner","pickled red onion":"syltede rødløg","thin chili or paprika oil":"tynd chili- eller paprikaolie",
+    "pickled red cabbage":"syltet rødkål","a few blackberries or blueberries":"et par brombær eller blåbær","shaved purple radish or shiso":"tyndtskåret lilla radise eller shiso",
+    "a curl of lemon or grapefruit zest":"en strimmel citron- eller grapefrugtskal","charred corn or a mango slaw":"grillet majs eller mangoslaw","a saffron or turmeric oil drizzle":"et stænk safran- eller gurkemejeolie",
+    "citrus segments":"citrusfrugt i både","a bright herb oil":"en frisk urteolie","charred corn or squash purée":"grillet majs eller græskarpuré"
+  };
+
+  const REGEX = [
+    [/^The weight on this plate is coming from (.+)\. That's a rich plate — richness score (\d+), acid score (\d+)\.$/,"Tyngden på denne tallerken kommer fra $1. Det er en fyldig tallerken — fyldescore $2, syrescore $3."],
+    [/^This plate is fairly light across the board — richness score (\d+), acid score (\d+)\. There isn't much to balance out\.$/,"Denne tallerken er forholdsvis let hele vejen rundt — fyldescore $1, syrescore $2. Der er ikke meget, der skal balanceres."],
+    [/^Acid is behind here relative to how rich this plate is\. Something sharp will cut through it rather than add more weight\.$/,"Syren halter bagefter i forhold til, hvor fyldig denne tallerken er. Noget syrligt vil skære igennem i stedet for at tilføre mere fylde."],
+    [/^Acid is already doing enough work — you don't need to fight the richness any further, just keep it in mind if you add anything else\.$/,"Syren gør allerede sit arbejde — du behøver ikke modarbejde fylden yderligere, men hav den i tankerne, hvis du tilføjer noget."],
+    [/^This plate is already reading green\. Add a small pop of red or white instead of piling on more green\.$/,"Denne tallerken fremstår allerede grøn. Tilføj et lille strejf af rødt eller hvidt i stedet for mere grønt."],
+    [/^This plate reads pale overall\. A touch of fresh green will be the difference between \"cooked well\" and \"plated well.\"$/,"Denne tallerken fremstår overordnet lys. Et strejf af frisk grønt kan gøre forskellen mellem godt tilberedt og godt anrettet."],
+    [/^This plate is reading yellow overall\. A small pop of purple or deep red will stop it looking one-note\.$/,"Denne tallerken fremstår overordnet gul. Et lille strejf af lilla eller dybrød forhindrer, at den ser ensformig ud."],
+    [/^This plate is dominated by purple tones\. A touch of yellow or citrus will lift it and give the eye something to land on\.$/,"Denne tallerken domineres af lilla nuancer. Et strejf af gult eller citrus løfter den og giver øjet noget at lande på."],
+    [/^This plate reads dark overall\. A bright, light element will keep it from looking heavy and closed-off\.$/,"Denne tallerken fremstår overordnet mørk. Et lyst element holder den fra at virke tung og lukket."],
+    [/^This plate is dominated by brown, golden or red tones\. A fresh green element will lift it and stop it looking flat and one-note\.$/,"Denne tallerken domineres af brune, gyldne eller røde nuancer. Et frisk grønt element løfter den og forhindrer, at den ser flad og ensformig ud."]
+  ];
+
+  const labelMap = {
+    "Fries":"Pommes frites","Rice":"Ris","Potatoes / mash":"Kartofler / mos","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Pickles":"Syltet agurk",
+    "Steak / red meat":"Steak / rødt kød","Lamb":"Lam","Duck":"And","Pork":"Svinekød","Pork belly":"Flæskesteg","Chicken":"Kylling","Turkey":"Kalkun","Salmon":"Laks","White fish":"Hvid fisk","White fish in batter":"Paneret hvid fisk","Shellfish / shrimp":"Skaldyr / rejer","Tuna":"Tun","Egg-based":"Æggebaseret","Vegetarian / tofu":"Vegetarisk / tofu","Mushroom (as main)":"Svampe som hovedingrediens","Cauliflower (as main)":"Blomkål som hovedingrediens","Beans / legumes":"Bønner / bælgfrugter",
+    "Fried":"Stegt","Seared / pan-fried":"Stegt på pande","Grilled":"Grillet","Roasted":"Ovnbagt","Braised / slow-cooked":"Braiseret / langtidskogt","Steamed":"Dampet","Raw / cured":"Rå / saltet","Poached":"Pocheret",
+    "Fries":"Pommes frites","Rice":"Ris","Potatoes / mash":"Kartofler / mos","Toasted bread":"Ristet brød","Green beans / haricot verts":"Grønne bønner / haricots verts","Salad leaves":"Salatblade","Roasted root veg":"Ovnbagte rodfrugter","Extra shrimp / shellfish garnish":"Ekstra rejer / skaldyr som garnish","Egg":"Æg","Cheese":"Ost","Polenta":"Polenta","Couscous":"Couscous","Quinoa":"Quinoa","Grilled corn":"Grillet majs","Red cabbage slaw":"Rå rødkålssalat","Pickles":"Syltet agurk"
+  };
+
+  function toDa(s){
+    if(!s) return s;
+    const near=s.match(/^(?:Near|I nærheden af)\s+(.+)$/i);
+    if(near) return toDa(near[1]);
+    if(DICT[s]) return DICT[s];
+    for(const [re,repl] of REGEX){ if(re.test(s)) return s.replace(re,repl); }
+    let out=s;
+    Object.keys(labelMap).sort((a,b)=>b.length-a.length).forEach(k=>{out=out.split(k).join(labelMap[k]);});
+    return out;
+  }
+
+  const originalText=new WeakMap();
+
+  function translateDynamicText(s){
+    if(!s) return s;
+    const da=localStorage.getItem('plateLogicLang')==='da';
+    const map=da?{
+      'Sender code...':'Sender kode...',
+      '8-digit code sent. Check your email.':'8-cifret kode sendt. Tjek din e-mail.'
+    }:{
+      'Sender kode...':'Sending code...',
+      '8-cifret kode sendt. Tjek din e-mail.':'8-digit code sent. Check your email.'
+    };
+    return map[s]||s;
+  }
+
+  function setAuthPlaceholders(){
+    const input=document.getElementById('pl-auth-otp-input');
+    if(input) input.placeholder=localStorage.getItem('plateLogicLang')==='da'?'8-cifret kode':'8-digit code';
+  }
+
+  function walk(root, da){
+    const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    while(w.nextNode()) nodes.push(w.currentNode);
+    nodes.forEach(n=>{
+      if(!n.parentElement || ['SCRIPT','STYLE'].includes(n.parentElement.tagName)) return;
+      if(!originalText.has(n)) originalText.set(n,n.nodeValue);
+      const original=originalText.get(n);
+      n.nodeValue=da?toDa(original):translateDynamicText(original);
+    });
+    root.querySelectorAll?.('input,textarea').forEach(el=>{
+      if(el.placeholder){
+        if(!el.dataset.plOrigPlaceholder) el.dataset.plOrigPlaceholder=el.placeholder;
+        el.placeholder=da?toDa(el.dataset.plOrigPlaceholder):el.dataset.plOrigPlaceholder;
+      }
+    });
+  }
+
+  function applyLang(lang){
+    setLanguage(lang);
+  }
+
+  function addButton(){
+    const bar=document.getElementById('pl-planbar');
+    if(!bar || document.getElementById('pl-language')) return;
+    const wrap=document.createElement('div');
+    wrap.id='pl-language';
+    wrap.innerHTML='<a id="pl-da" href="?lang=da">🇩🇰 Dansk</a><a id="pl-en" href="?lang=en">🇬🇧 English</a>';
+    bar.appendChild(wrap);
+  }
+
+  function setLanguage(lang){
+    const selected=lang==='da'?'da':'en';
+    document.querySelectorAll('[data-pl-en]').forEach(el=>{
+      el.textContent=selected==='da'?el.getAttribute('data-pl-da'):el.getAttribute('data-pl-en');
+    });
+    localStorage.setItem('plateLogicLang',selected);
+    document.documentElement.lang=selected;
+    walk(document.body,selected==='da');
+    setAuthPlaceholders();
+    document.querySelectorAll('#sides .check-item').forEach(label=>{
+      const text=label.textContent.trim();
+      if(selected==='da' && text==='Quick pickles') label.childNodes[label.childNodes.length-1].nodeValue=' Syltet agurk';
+      if(selected==='en' && text==='Hurtigsylte') label.childNodes[label.childNodes.length-1].nodeValue=' Pickles';
+    });
+    const da=document.getElementById('pl-da'), en=document.getElementById('pl-en');
+    if(da)da.classList.toggle('active',selected==='da');
+    if(en)en.classList.toggle('active',selected==='en');
+  }
+
+  const obs=new MutationObserver(muts=>{
+    const da=localStorage.getItem('plateLogicLang')==='da';
+    muts.forEach(m=>{
+      m.addedNodes.forEach(n=>{if(n.nodeType===1)walk(n,da);});
+    });
+  });
+
+  window.addEventListener('DOMContentLoaded',()=>{
+    addButton();
+    obs.observe(document.body,{childList:true,subtree:true});
+    const requested=new URLSearchParams(window.location.search).get('lang');
+    if(requested==='da'||requested==='en') localStorage.setItem('plateLogicLang',requested);
+    const saved=localStorage.getItem('plateLogicLang');
+    const lang=saved||((navigator.language||'').toLowerCase().startsWith('da')?'da':'en');
+    applyLang(lang);
+  });
+})();
+</script>
+<div id="smol-launch-badge" style="margin:32px 0;text-align:center;">
+  <a href="https://smollaunch.com" target="_blank" rel="noopener">
+    <img src="https://smollaunch.com/badges/featured-dark.svg" alt="Plate Logic — Featured on Smol Launch" width="250" height="60">
+  </a>
+</div>
+</body>
