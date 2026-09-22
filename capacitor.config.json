@@ -1,0 +1,9 @@
+{
+  "appId": "dk.platelogic.app",
+  "appName": "Plate Logic",
+  "webDir": ".",
+  "server": {
+    "url": "https://platelogic.dk/",
+    "cleartext": false
+  }
+}
