@@ -11,10 +11,10 @@
   "lang": "en",
   "icons": [
     {
-      "src": "https://platelogic.dk/",
-      "sizes": "any",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "src": "/icons/plate-logic-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ]
 }
