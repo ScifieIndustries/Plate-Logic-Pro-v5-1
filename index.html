@@ -290,25 +290,25 @@
 .pl-auth-status{font-size:12px;min-height:18px;margin-top:8px}
 </style>
 </head>
-<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p>Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.</p><div id="pl-plan-actions" class="pl-plan-actions"><button id="pl-pro-action" class="pl-pro">Pro · 39 kr./md.</button><button id="pl-annual-action" class="pl-life">Pro · 299 kr./år</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
+<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p data-pl-en="Try Plate Logic for free. Upgrade to Pro for unlimited use." data-pl-da="Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.">Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.</p><div id="pl-plan-actions" class="pl-plan-actions"><button id="pl-pro-action" class="pl-pro">Pro · 39 kr./md.</button><button id="pl-annual-action" class="pl-life">Pro · 299 kr./år</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
 
 <div id="pl-auth-modal" class="pl-auth-backdrop" onclick="if(event.target===this)plCloseAuth()"><div class="pl-auth-modal">
-  <h2>Log ind på Plate Logic</h2>
+  <h2 data-pl-en="Log in to Plate Logic" data-pl-da="Log ind på Plate Logic">Log ind på Plate Logic</h2>
 
-<p>Indtast din e-mail. Du får en 8-cifret kode på mail.</p>
+<p data-pl-en="Enter your email. You’ll receive an 8-digit code by email." data-pl-da="Indtast din e-mail. Du får en 8-cifret kode på mail.">Indtast din e-mail. Du får en 8-cifret kode på mail.</p>
 
 <input id="pl-auth-email-input" type="email" autocomplete="email" placeholder="din@email.dk">
 
-<button class="pl-auth-submit" onclick="plSendLoginLink()">Send kode</button>
+<button class="pl-auth-submit" data-pl-en="Send code" data-pl-da="Send kode" onclick="plSendLoginLink()">Send kode</button>
 
 <div id="pl-auth-otp" style="display:none;margin-top:12px;">
   <input id="pl-auth-otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="8-cifret kode">
-  <button class="pl-auth-submit" onclick="plVerifyOtp()">Log ind</button>
+  <button class="pl-auth-submit" data-pl-en="Log in" data-pl-da="Log ind" onclick="plVerifyOtp()">Log ind</button>
 </div>
 
 <div id="pl-auth-status" class="pl-auth-status"></div>
 
-<button class="pl-auth-close" onclick="plCloseAuth()">Luk</button>
+<button class="pl-auth-close" data-pl-en="Close" data-pl-da="Luk" onclick="plCloseAuth()">Luk</button>
 </div></div>
 <div class="hero">
   <div class="hero-inner">
@@ -967,27 +967,32 @@ window.plOpenPortal=async function(){
     const plan=(currentUser ? (currentEntitlement?.plan||'free') : 'free');
     const actions=document.getElementById('pl-plan-actions'); if(actions) actions.style.display=plan==='lifetime'?'none':'';
     const annualAction=document.getElementById('pl-annual-action');
+    const isDa=localStorage.getItem('plateLogicLang')!=='en';
     if(annualAction){
       annualAction.style.display=plan==='free'?'':'none';
-      annualAction.textContent='Pro · 299 kr./år';
+      annualAction.textContent=isDa?'Pro · 299 kr./år':'Pro · 299 kr./yr';
       annualAction.onclick=function(){plOpenPay('Annual');};
     }
     const proAction=document.getElementById('pl-pro-action');
 if(proAction){
   if(plan==='pro'){
-    proAction.textContent='Annuller abonnement';
+    proAction.textContent=isDa?'Annuller abonnement':'Cancel subscription';
     proAction.onclick=plOpenPortal;
   }else{
-    proAction.textContent='Pro · 39 kr./md.';
+    proAction.textContent=isDa?'Pro · 39 kr./md.':'Pro · 39 kr./mo.';
     proAction.onclick=function(){plOpenPay('Pro');};
   }
 }
     if(plan!=='free'){
       b.textContent=plan==='lifetime'?'LIFETIME':'PRO';
-      x.textContent=plan==='lifetime'?'Lifetime-adgang er slået til.':'Ubegrænset brug er slået til.';
+      x.textContent=plan==='lifetime'
+        ?(isDa?'Lifetime-adgang er slået til.':'Lifetime access is enabled.')
+        :(isDa?'Ubegrænset brug er slået til.':'Unlimited use is enabled.');
     }else{
       b.textContent='FREE';
-      x.textContent='Gratis: '+Math.max(0,L-u())+' analyser tilbage på denne enhed.';
+      x.textContent=isDa
+        ?'Gratis: '+Math.max(0,L-u())+' analyser tilbage på denne enhed.'
+        :'Free: '+Math.max(0,L-u())+' analyses left on this device.';
     }
   };
   window.plCanUse=function(){
