@@ -773,7 +773,46 @@ if ('serviceWorker' in navigator) {
 
   function p(){return localStorage.getItem(pk)||'free'}
   function u(){return Number(localStorage.getItem(uk)||0)}
-  function setStatus(msg){const el=document.getElementById('pl-auth-status');if(el)el.textContent=msg||''}
+  function setStatus(msg){
+    const el=document.getElementById('pl-auth-status');
+    if(!el)return;
+    const da=localStorage.getItem('plateLogicLang')==='da';
+    const map={
+      'Sender kode...':'Sending code...',
+      '8-cifret kode sendt. Tjek din e-mail.':'8-digit code sent. Check your email.',
+      'Login er ikke konfigureret endnu.':'Login is not configured yet.',
+      'Indtast en gyldig e-mailadresse.':'Enter a valid email address.',
+      'Der opstod en fejl. Prøv igen.':'An error occurred. Please try again.',
+      'Indtast din e-mailadresse.':'Enter your email address.',
+      'Indtast den 8-cifrede kode.':'Enter the 8-digit code.',
+      'Logger ind...':'Logging in...',
+      'Koden er forkert eller udløbet. Prøv igen.':'The code is incorrect or expired. Please try again.',
+      'Du er logget ind.':'You are logged in.',
+      'Kunne ikke hente din Pro-status. Prøver igen…':'Could not load your Pro status. Trying again…',
+      'Åbner abonnement...':'Opening subscription...',
+      'Kunne ikke åbne abonnementssiden.':'Could not open the subscription page.',
+      'Log ind først.':'Log in first.',
+      'Log ind først. Så kan betalingen kobles til din konto.':'Log in first so the payment can be linked to your account.'
+    };
+    const reverse={
+      'Sending code...':'Sender kode...',
+      '8-digit code sent. Check your email.':'8-cifret kode sendt. Tjek din e-mail.',
+      'Login is not configured yet.':'Login er ikke konfigureret endnu.',
+      'Enter a valid email address.':'Indtast en gyldig e-mailadresse.',
+      'An error occurred. Please try again.':'Der opstod en fejl. Prøv igen.',
+      'Enter your email address.':'Indtast din e-mailadresse.',
+      'Enter the 8-digit code.':'Indtast den 8-cifrede kode.',
+      'Logging in...':'Logger ind...',
+      'The code is incorrect or expired. Please try again.':'Koden er forkert eller udløbet. Prøv igen.',
+      'You are logged in.':'Du er logget ind.',
+      'Could not load your Pro status. Trying again…':'Kunne ikke hente din Pro-status. Prøver igen…',
+      'Opening subscription...':'Åbner abonnement...',
+      'Could not open the subscription page.':'Kunne ikke åbne abonnementssiden.',
+      'Log in first.':'Log ind først.',
+      'Log in first so the payment can be linked to your account.':'Log ind først. Så kan betalingen kobles til din konto.'
+    };
+    el.textContent=da?(reverse[msg]||msg):(map[msg]||msg);
+  }
 
   window.plOpenAuth=function(){
     const m=document.getElementById('pl-auth-modal');
