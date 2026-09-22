@@ -1,0 +1,20 @@
+{
+  "name": "Plate Logic",
+  "short_name": "Plate Logic",
+  "description": "Make everyday home cooking look and feel more restaurant-like.",
+  "start_url": "https://platelogic.dk/",
+  "scope": "https://platelogic.dk/",
+  "display": "standalone",
+  "background_color": "#1c2420",
+  "theme_color": "#1c2420",
+  "orientation": "portrait",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "https://platelogic.dk/",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
