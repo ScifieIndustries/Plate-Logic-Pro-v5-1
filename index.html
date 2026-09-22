@@ -951,11 +951,11 @@ if(data?.plan==='pro' || data?.plan==='lifetime'){
     const email=document.getElementById('pl-auth-email');
     if(!btn)return;
     if(currentUser){
-      btn.textContent='Log ud';
+      btn.textContent=localStorage.getItem('plateLogicLang')==='en'?'Log out':'Log ud';
       btn.onclick=plSignOut;
       if(email)email.textContent=currentUser.email||'';
     }else{
-      btn.textContent='Log ind med e-mail';
+      btn.textContent=localStorage.getItem('plateLogicLang')==='en'?'Log in with email':'Log ind med e-mail';
       btn.onclick=plOpenAuth;
       if(email)email.textContent='';
     }
