@@ -324,6 +324,16 @@
 
 <button class="pl-auth-close" data-pl-en="Close" data-pl-da="Luk" onclick="plCloseAuth()">Luk</button>
 </div></div>
+<div id="pl-reset-password-modal" class="pl-auth-backdrop" style="display:none;">
+  <div class="pl-auth-modal">
+    <h2 data-pl-en="Set a new password" data-pl-da="Sæt et nyt password">Sæt et nyt password</h2>
+    <p data-pl-en="Choose a password for your Plate Logic account." data-pl-da="Vælg et password til din Plate Logic-konto.">Vælg et password til din Plate Logic-konto.</p>
+    <input id="pl-reset-password-input" type="password" autocomplete="new-password" placeholder="New password">
+    <input id="pl-reset-password-confirm" type="password" autocomplete="new-password" placeholder="Repeat password" style="margin-top:8px;">
+    <button class="pl-auth-submit" data-pl-en="Save new password" data-pl-da="Gem nyt password" onclick="plSetNewPassword()">Gem nyt password</button>
+    <div id="pl-reset-password-status" class="pl-auth-status"></div>
+  </div>
+</div>
 <div id="pl-delete-modal" class="pl-delete-backdrop" onclick="if(event.target===this)plCloseDeleteAccount()">
   <div class="pl-delete-modal">
     <h2 data-pl-en="Delete your account?" data-pl-da="Slet din konto?">Slet din konto?</h2>
@@ -851,6 +861,42 @@ if ('serviceWorker' in navigator) {
     setStatus('');
   };
 
+  window.plOpenResetPassword=function(){
+    const m=document.getElementById('pl-reset-password-modal');
+    if(m)m.style.display='flex';
+    const p=document.getElementById('pl-reset-password-input');
+    if(p){p.value='';setTimeout(()=>p.focus(),50);}
+    const c=document.getElementById('pl-reset-password-confirm');
+    if(c)c.value='';
+    const s=document.getElementById('pl-reset-password-status');
+    if(s)s.textContent='';
+  };
+
+  window.plSetNewPassword=async function(){
+    if(!sb){return}
+    const p=document.getElementById('pl-reset-password-input')?.value||'';
+    const c=document.getElementById('pl-reset-password-confirm')?.value||'';
+    const s=document.getElementById('pl-reset-password-status');
+    if(p.length<6){if(s)s.textContent='Password skal være mindst 6 tegn.';return}
+    if(p!==c){if(s)s.textContent='De to passwords er ikke ens.';return}
+    if(s)s.textContent='Gemmer...';
+    const {error}=await sb.auth.updateUser({password:p});
+    if(error){
+      console.error(error);
+      if(s)s.textContent='Kunne ikke gemme passwordet. Prøv igen.';
+      return;
+    }
+    if(s)s.textContent='Password er gemt. Du kan nu logge ind med e-mail og password.';
+    const input=document.getElementById('pl-reset-password-input');
+    const confirm=document.getElementById('pl-reset-password-confirm');
+    if(input)input.value='';
+    if(confirm)confirm.value='';
+    setTimeout(()=>{
+      const m=document.getElementById('pl-reset-password-modal');
+      if(m)m.style.display='none';
+    },900);
+  };
+
   window.plOpenDeleteAccount=function(){
     if(!currentUser){
       plOpenAuth();
@@ -1188,10 +1234,15 @@ if(proAction){
 
     await loadEntitlement();
 
-    sb.auth.onAuthStateChange((_event,session)=>{
+    sb.auth.onAuthStateChange((event,session)=>{
       currentUser=session?.user||null;
       renderAuth();
-      if(currentUser)plCloseAuth();
+      if(event==='PASSWORD_RECOVERY'){
+        plCloseAuth();
+        plOpenResetPassword();
+      }else if(currentUser){
+        plCloseAuth();
+      }
       setTimeout(()=>loadEntitlement(),0);
     });
   }
