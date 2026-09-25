@@ -305,9 +305,17 @@
 
 <input id="pl-auth-email-input" type="email" autocomplete="email" placeholder="din@email.dk">
 
-<button class="pl-auth-submit" data-pl-en="Send code" data-pl-da="Send kode" onclick="plSendLoginLink()">Send kode</button>
+<div style="display:flex;gap:8px;margin-top:8px;">
+  <button id="pl-auth-mode-otp" type="button" class="pl-auth-submit" style="margin-top:0;" data-pl-en="Email code" data-pl-da="Emailkode" onclick="plSetAuthMode('otp')">Emailkode</button>
+  <button id="pl-auth-mode-password" type="button" class="pl-auth-submit" style="margin-top:0;background:rgba(255,255,255,.1);color:#fff;" data-pl-en="Password" data-pl-da="Password" onclick="plSetAuthMode('password')">Password</button>
+</div>
 
-<div id="pl-auth-otp" style="display:none;margin-top:12px;">
+<div id="pl-auth-password" style="display:none;margin-top:12px;">
+  <input id="pl-auth-password-input" type="password" autocomplete="current-password" placeholder="Password">
+  <button class="pl-auth-submit" data-pl-en="Log in with password" data-pl-da="Log ind med password" onclick="plLoginWithPassword()">Log ind med password</button>
+</div>
+
+<div id="pl-auth-otp" style="display:block;margin-top:12px;">
   <input id="pl-auth-otp-input" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="8-digit code">
   <button class="pl-auth-submit" data-pl-en="Log in" data-pl-da="Log ind" onclick="plVerifyOtp()">Log ind</button>
 </div>
@@ -893,6 +901,44 @@ if ('serviceWorker' in navigator) {
     renderAuth();
     plOpenAuth();
     setStatus('Din konto er slettet.');
+  };
+
+  window.plSetAuthMode=function(mode){
+    const otp=document.getElementById('pl-auth-otp');
+    const password=document.getElementById('pl-auth-password');
+    const otpBtn=document.getElementById('pl-auth-mode-otp');
+    const passwordBtn=document.getElementById('pl-auth-mode-password');
+    const usePassword=mode==='password';
+    if(otp)otp.style.display=usePassword?'none':'block';
+    if(password)password.style.display=usePassword?'block':'none';
+    if(otpBtn)otpBtn.style.background=usePassword?'rgba(255,255,255,.1)':'#d9e8d2';
+    if(otpBtn)otpBtn.style.color=usePassword?'#fff':'#1c2420';
+    if(passwordBtn)passwordBtn.style.background=usePassword?'#d9e8d2':'rgba(255,255,255,.1)';
+    if(passwordBtn)passwordBtn.style.color=usePassword?'#1c2420':'#fff';
+    setStatus('');
+  };
+
+  window.plLoginWithPassword=async function(){
+    if(!sb){setStatus('Login er ikke konfigureret endnu.');return}
+    const email=(document.getElementById('pl-auth-email-input')?.value||'').trim().toLowerCase();
+    const password=(document.getElementById('pl-auth-password-input')?.value||'');
+    if(!email||!email.includes('@')){setStatus('Indtast en gyldig e-mailadresse.');return}
+    if(!password){setStatus('Indtast dit password.');return}
+    setStatus('Logger ind...');
+    const {data,error}=await sb.auth.signInWithPassword({email,password});
+    if(error){
+      console.error(error);
+      setStatus('E-mail eller password er forkert.');
+      return;
+    }
+    currentUser=data?.user||null;
+    const passwordInput=document.getElementById('pl-auth-password-input');
+    if(passwordInput)passwordInput.value='';
+    await loadEntitlement();
+    plRefreshPlan();
+    renderAuth();
+    setStatus('Du er logget ind.');
+    setTimeout(()=>{plCloseAuth();},300);
   };
 
   window.plSendLoginLink=async function(){
