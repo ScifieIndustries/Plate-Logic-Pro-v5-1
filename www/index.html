@@ -1218,6 +1218,19 @@ if(proAction){
       return;
     }
     const isRecoveryLink=window.location.hash.includes('type=recovery') || new URLSearchParams(window.location.search).get('type')==='recovery';
+    let recoveryPending=isRecoveryLink;
+    sb.auth.onAuthStateChange((event,session)=>{
+      currentUser=session?.user||null;
+      renderAuth();
+      if(event==='PASSWORD_RECOVERY' || recoveryPending){
+        recoveryPending=false;
+        plCloseAuth();
+        plOpenResetPassword();
+      }else if(currentUser){
+        plCloseAuth();
+      }
+      setTimeout(()=>loadEntitlement(),0);
+    });
     const {data:sessionData}=await sb.auth.getSession();
     currentUser=sessionData?.session?.user||null;
     renderAuth();
@@ -1226,7 +1239,7 @@ if(proAction){
         plCloseAuth();
         plOpenResetPassword();
         history.replaceState({},document.title,window.location.pathname+window.location.search);
-      },0);
+      },100);
     }
 
     // Refresh/validate the authenticated user before reading entitlements.
@@ -1242,17 +1255,6 @@ if(proAction){
 
     await loadEntitlement();
 
-    sb.auth.onAuthStateChange((event,session)=>{
-      currentUser=session?.user||null;
-      renderAuth();
-      if(event==='PASSWORD_RECOVERY'){
-        plCloseAuth();
-        plOpenResetPassword();
-      }else if(currentUser){
-        plCloseAuth();
-      }
-      setTimeout(()=>loadEntitlement(),0);
-    });
   }
 
   document.addEventListener('DOMContentLoaded',()=>{
