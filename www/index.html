@@ -288,9 +288,15 @@
 .pl-auth-submit{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font-weight:800;background:#d9e8d2;color:#1c2420;cursor:pointer}
 .pl-auth-close{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font-weight:800;background:rgba(255,255,255,.1);color:#fff;cursor:pointer}
 .pl-auth-status{font-size:12px;min-height:18px;margin-top:8px}
+.pl-delete-account-btn{border:1px solid rgba(255,100,100,.35);background:rgba(150,40,40,.12);color:#ffd9d9;border-radius:12px;padding:9px 12px;font-weight:700;cursor:pointer;display:none}
+.pl-delete-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-end;justify-content:center;z-index:10001}
+.pl-delete-modal{width:min(520px,100%);background:#1c2420;color:#fff;border-radius:22px 22px 0 0;padding:22px;box-sizing:border-box}
+.pl-delete-modal h2{margin:0 0 10px}.pl-delete-modal p{font-size:13px;line-height:1.5;opacity:.82}
+.pl-delete-confirm{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font-weight:800;background:#b94a43;color:#fff;cursor:pointer}
+.pl-delete-cancel{width:100%;margin-top:8px;border:0;border-radius:12px;padding:13px;font-weight:800;background:rgba(255,255,255,.1);color:#fff;cursor:pointer}
 </style>
 </head>
-<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p data-pl-en="Try Plate Logic for free. Upgrade to Pro for unlimited use." data-pl-da="Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.">Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.</p><div id="pl-plan-actions" class="pl-plan-actions"><button id="pl-pro-action" class="pl-pro">Pro · 39 kr./md.</button><button id="pl-annual-action" class="pl-life">Pro · 299 kr./år</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" data-pl-en="Log in with email" data-pl-da="Log ind med e-mail" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
+<body><div id="pl-planbar" class="pl-planbar"><h3>Plate Logic <span id="pl-plan-badge" class="pl-badge">FREE</span></h3><p data-pl-en="Try Plate Logic for free. Upgrade to Pro for unlimited use." data-pl-da="Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.">Prøv Plate Logic gratis. Opgrader til Pro for ubegrænset brug.</p><div id="pl-plan-actions" class="pl-plan-actions"><button id="pl-pro-action" class="pl-pro">Pro · 39 kr./md.</button><button id="pl-annual-action" class="pl-life">Pro · 299 kr./år</button></div><div id="pl-usage" class="pl-usage"></div><div class="pl-auth-row"><button id="pl-auth-button" class="pl-auth-btn" data-pl-en="Log in with email" data-pl-da="Log ind med e-mail" onclick="plOpenAuth()">Log ind med e-mail</button><span id="pl-auth-email" class="pl-auth-email"></span><button id="pl-delete-account-button" class="pl-delete-account-btn" data-pl-en="Delete account" data-pl-da="Slet konto" onclick="plOpenDeleteAccount()">Slet konto</button></div></div><div id="pl-pay-modal" class="pl-modal-backdrop" onclick="if(event.target===this)plClosePay()"><div class="pl-modal"><h2 id="pl-pay-title">Plate Logic Pro</h2><p>Du sendes videre til Stripe for sikker betaling.</p><div id="pl-pay-price" class="price">39 kr./md.</div><button id="pl-pay-btn" class="pl-pro" onclick="plGoToStripe()">Fortsæt til betaling</button><button class="pl-close" onclick="plClosePay()">Luk</button></div></div>
 
 <div id="pl-auth-modal" class="pl-auth-backdrop" onclick="if(event.target===this)plCloseAuth()"><div class="pl-auth-modal">
   <h2 data-pl-en="Log in to Plate Logic" data-pl-da="Log ind på Plate Logic">Log ind på Plate Logic</h2>
@@ -310,6 +316,17 @@
 
 <button class="pl-auth-close" data-pl-en="Close" data-pl-da="Luk" onclick="plCloseAuth()">Luk</button>
 </div></div>
+<div id="pl-delete-modal" class="pl-delete-backdrop" onclick="if(event.target===this)plCloseDeleteAccount()">
+  <div class="pl-delete-modal">
+    <h2 data-pl-en="Delete your account?" data-pl-da="Slet din konto?">Slet din konto?</h2>
+    <p data-pl-en="This permanently deletes your Plate Logic account and your subscription data. If you have an active Stripe subscription, it will be cancelled before the account is deleted. This cannot be undone."
+       data-pl-da="Dette sletter permanent din Plate Logic-konto og dine abonnementsdata. Hvis du har et aktivt Stripe-abonnement, bliver det annulleret, før kontoen slettes. Det kan ikke fortrydes.">
+       Dette sletter permanent din Plate Logic-konto og dine abonnementsdata. Hvis du har et aktivt Stripe-abonnement, bliver det annulleret, før kontoen slettes. Det kan ikke fortrydes.
+    </p>
+    <button class="pl-delete-confirm" data-pl-en="Delete account permanently" data-pl-da="Slet konto permanent" onclick="plDeleteAccount()">Slet konto permanent</button>
+    <button class="pl-delete-cancel" data-pl-en="Cancel" data-pl-da="Annuller" onclick="plCloseDeleteAccount()">Annuller</button>
+  </div>
+</div>
 <div class="hero">
   <div class="hero-inner">
     <h1>Plate Logic</h1>
@@ -826,6 +843,58 @@ if ('serviceWorker' in navigator) {
     setStatus('');
   };
 
+  window.plOpenDeleteAccount=function(){
+    if(!currentUser){
+      plOpenAuth();
+      setStatus('Log ind først.');
+      return;
+    }
+    const m=document.getElementById('pl-delete-modal');
+    if(m)m.style.display='flex';
+  };
+
+  window.plCloseDeleteAccount=function(){
+    const m=document.getElementById('pl-delete-modal');
+    if(m)m.style.display='none';
+  };
+
+  window.plDeleteAccount=async function(){
+    if(!currentUser||!sb){
+      plCloseDeleteAccount();
+      plOpenAuth();
+      setStatus('Log ind først.');
+      return;
+    }
+
+    const confirmButton=document.querySelector('.pl-delete-confirm');
+    if(confirmButton){
+      confirmButton.disabled=true;
+      confirmButton.textContent=localStorage.getItem('plateLogicLang')==='da'?'Sletter konto...':'Deleting account...';
+    }
+
+    const {data,error}=await sb.functions.invoke('delete-account',{body:{}});
+
+    if(error||!data?.success){
+      console.error('Plate Logic account deletion failed:',error||data);
+      if(confirmButton){
+        confirmButton.disabled=false;
+        confirmButton.textContent=localStorage.getItem('plateLogicLang')==='da'?'Slet konto permanent':'Delete account permanently';
+      }
+      setStatus(data?.error||'Der opstod en fejl. Prøv igen.');
+      return;
+    }
+
+    currentUser=null;
+    currentEntitlement=null;
+    localStorage.removeItem(pk);
+    await sb.auth.signOut().catch(()=>{});
+    plCloseDeleteAccount();
+    plRefreshPlan();
+    renderAuth();
+    plOpenAuth();
+    setStatus('Din konto er slettet.');
+  };
+
   window.plSendLoginLink=async function(){
   if(!sb){setStatus('Login er ikke konfigureret endnu.');return}
 
@@ -949,15 +1018,18 @@ if(data?.plan==='pro' || data?.plan==='lifetime'){
   function renderAuth(){
     const btn=document.getElementById('pl-auth-button');
     const email=document.getElementById('pl-auth-email');
+    const deleteBtn=document.getElementById('pl-delete-account-button');
     if(!btn)return;
     if(currentUser){
       btn.textContent=localStorage.getItem('plateLogicLang')==='en'?'Log out':'Log ud';
       btn.onclick=plSignOut;
       if(email)email.textContent=currentUser.email||'';
+      if(deleteBtn)deleteBtn.style.display='inline-block';
     }else{
       btn.textContent=localStorage.getItem('plateLogicLang')==='en'?'Log in with email':'Log ind med e-mail';
       btn.onclick=plOpenAuth;
       if(email)email.textContent='';
+      if(deleteBtn)deleteBtn.style.display='none';
     }
   }
 
@@ -1136,6 +1208,12 @@ if(proAction){
     "Kunne ikke hente din Pro-status. Prøver igen…":"Kunne ikke hente din Pro-status. Prøver igen…","Åbner abonnement...":"Åbner abonnement...",
     "Kunne ikke åbne abonnementssiden.":"Kunne ikke åbne abonnementssiden.","Log ind først.":"Log ind først.",
     "Log ind først. Så kan betalingen kobles til din konto.":"Log ind først. Så kan betalingen kobles til din konto.",
+    "Din konto er slettet.":"Din konto er slettet.",
+    "Slet konto":"Slet konto",
+    "Slet konto?":"Slet konto?",
+    "Dette sletter permanent din Plate Logic-konto og dine abonnementsdata. Hvis du har et aktivt Stripe-abonnement, bliver det annulleret, før kontoen slettes. Det kan ikke fortrydes.":"Dette sletter permanent din Plate Logic-konto og dine abonnementsdata. Hvis du har et aktivt Stripe-abonnement, bliver det annulleret, før kontoen slettes. Det kan ikke fortrydes.",
+    "Slet konto permanent":"Slet konto permanent",
+    "Annuller":"Annuller",
     "Annuller abonnement":"Annuller abonnement","Ubegrænset brug er slået til.":"Ubegrænset brug er slået til.","Lifetime-adgang er slået til.":"Lifetime-adgang er slået til.",
     "Gratis: ":"Gratis: "," analyser tilbage på denne enhed.":" analyser tilbage på denne enhed.",
     "pickled shallots or red onion":"syltede skalotteløg eller rødløg","a sherry vinegar drizzle":"et stænk sherryeddike","cornichons or mustard seed":"cornichoner eller sennepsfrø","a spoon of salsa verde":"en skefuld salsa verde",
