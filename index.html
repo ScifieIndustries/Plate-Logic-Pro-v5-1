@@ -1217,9 +1217,17 @@ if(proAction){
       renderAuth();
       return;
     }
+    const isRecoveryLink=window.location.hash.includes('type=recovery') || new URLSearchParams(window.location.search).get('type')==='recovery';
     const {data:sessionData}=await sb.auth.getSession();
     currentUser=sessionData?.session?.user||null;
     renderAuth();
+    if(isRecoveryLink){
+      setTimeout(()=>{
+        plCloseAuth();
+        plOpenResetPassword();
+        history.replaceState({},document.title,window.location.pathname+window.location.search);
+      },0);
+    }
 
     // Refresh/validate the authenticated user before reading entitlements.
     // This avoids relying only on a cached session when the page is opened
