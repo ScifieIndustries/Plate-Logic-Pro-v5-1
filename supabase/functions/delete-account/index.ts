@@ -19,7 +19,7 @@ async function stripeRequest(path: string, init: RequestInit = {}) {
   if (!STRIPE_SECRET_KEY) throw new Error("Stripe is not configured.");
 
   const headers = new Headers(init.headers);
-  headers.set("Authorization", `Basic ${btoa(`:${STRIPE_SECRET_KEY}`)}`);
+  headers.set("Authorization", `Basic ${btoa(`${STRIPE_SECRET_KEY}:`)}`);
   headers.set("Content-Type", "application/x-www-form-urlencoded");
 
   return fetch(`https://api.stripe.com/v1/${path}`, { ...init, headers });
